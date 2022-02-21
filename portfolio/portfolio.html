@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <!-- 수정했습니다 -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/portfolio.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- min-length 추가했습니다. -->
+    <header>
+      <!-- 직관적으로 수정했습니다. -->
+      <h1>포트폴리오</h1>
+    </header>
+    <main>
+      <nav class="component-nav">
+        <!-- 수정했습니다 그런데 ul li를 같이쓰려니 css가 불필요하게 길어지거나 앵커의 영역지정이 텍스트로 한정되는 것 같아서 이렇게 했는데 않좋을까요? -->
+        <a href="#component-table">테이블 요소</a>
+        <a href="#component-form">폼 요소</a>
+        <a href="#component-list">리스트 요소</a>
+      </nav>
+      <section class="component">
+        <h2>구성요소</h2>
+        <article id="component-table" class="component-item">
+          <div class="component-item-header">
+            <h3>테이블 요소</h3>
+          </div>
+          <div class="component-item-body">
+            <p>콘텐츠 영역</p>
+          </div>
+        </article>
+        <article id="component-form" class="component-item">
+          <div class="component-item-header">
+            <h3>폼 요소</h3>
+          </div>
+          <div class="component-item-body">
+            <p>콘텐츠 영역</p>
+          </div>
+        </article>
+        <article id="component-list" class="component-item">
+          <div class="component-item-header">
+            <h3>리스트 요소</h3>
+          </div>
+          <div class="component-item-body">
+            <p>콘텐츠 영역</p>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <address>
+        주소: 경기도 성남시 분당구, E-MAIL: honggildong@naver.com
+      </address>
+      <p>Copyright © <strong>Hong Gil Dong.</strong> All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
