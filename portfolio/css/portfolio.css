@@ -136,14 +136,14 @@ body {
   font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   margin: 0;
 }
-header {
+.header {
   min-width: 1080px;
   background-color: #000;
   height: 120px;
   font-size: 0;
 }
 /* 블록레벨 태그 height 100%는 아닌것 같습니다. */
-header h1 {
+.header h1 {
   color: #fff;
   margin: 0 auto;
   width: 1080px;
@@ -152,18 +152,21 @@ header h1 {
   font-size: 40px;
   font-weight: bold;
 }
-main {
+.main {
   margin: 0 auto;
   box-sizing: border-box;
   padding: 40px;
   width: 1080px;
   text-align: left;
 }
-main .component-nav {
+.main .component-nav {
   width: 1000px;
   font-size: 0;
 }
-main .component-nav a {
+.main .component-nav li {
+  display: inline-block;
+}
+.main .component-nav li a {
   display: inline-block;
   text-align: center;
   width: 324px;
@@ -175,16 +178,16 @@ main .component-nav a {
   color: #000;
   text-decoration: none;
 }
-main .component-nav a:hover {
+.main .component-nav li a:hover {
   border: 1px solid #454545;
   font-weight: bold;
 }
 
-main .component-nav a:nth-child(n + 2) {
+.main .component-nav li:nth-child(n + 2) {
   margin-left: 14px;
 }
 
-main .component h2 {
+.main .component h2 {
   margin-top: 53.4px;
   margin-bottom: 23.4px;
   font-size: 20px;
@@ -193,50 +196,466 @@ main .component h2 {
   padding-bottom: 30px;
   border-bottom: 1px solid #454545;
 }
-main .component .component-item {
+
+.main .component .component-item {
   margin-bottom: 30px;
 }
-main .component .component-item .component-item-header {
-  height: 46px;
+.main .component .component-item h3 {
   box-sizing: border-box;
   border: 1px solid #d1d1d1;
   padding: 15px;
   background-color: #f7f7f7;
-}
-main .component .component-item .component-item-header h3 {
+  height: 46px;
   margin: 0;
   font-size: 16px;
   color: #333;
   font-weight: bold;
 }
 
-main .component .component-item .component-item-body {
+.main .component .component-item .component-item-body {
   box-sizing: border-box;
   border: 1px solid #d1d1d1;
   border-top: 0px;
-}
-
-main .component .component-item .component-item-body p {
-  font-size: 12px;
-  margin: 0;
   padding: 30px;
 }
-footer {
+
+.component-item .component-item-body h4 {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+  margin: 15px 0;
+}
+/* 테이블요소 */
+.kid-size-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.kid-size-table caption {
+  font-size: 14px;
+  text-align: left;
+  color: #000;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.kid-size-table colgroup col:nth-child(1) {
+  width: 14%;
+}
+.kid-size-table colgroup col:nth-child(2) {
+  width: 8%;
+}
+.kid-size-table colgroup col:nth-child(3) {
+  width: 10%;
+}
+.kid-size-table colgroup col:nth-child(4) {
+  width: 10%;
+}
+.kid-size-table colgroup col:nth-child(5) {
+  width: 10%;
+}
+.kid-size-table colgroup col:nth-child(6) {
+  width: 10%;
+}
+.kid-size-table colgroup col:nth-child(7) {
+  width: 10%;
+}
+.kid-size-table colgroup col:nth-child(8) {
+  width: 10%;
+}
+.kid-size-table colgroup col:nth-child(9) {
+  width: 18%;
+}
+.kid-size-table th {
+  background-color: #fbfbfb;
+  font-weight: bold;
+}
+.kid-size-table th,
+.kid-size-table td {
+  font-size: 12px;
+  border: 1px solid #e4e4e4;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+.kid-size-table th em,
+.kid-size-table td em {
+  font-weight: bold;
+}
+
+.refundable-amount-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.refundable-amount-table caption {
+  font-weight: bold;
+  font-size: 14px;
+  columns: #000;
+  font-weight: bold;
+  text-align: left;
+  margin: 40px 0 14px;
+}
+
+.refundable-amount-table colgroup col:nth-child(1) {
+  width: 25%;
+}
+.refundable-amount-table colgroup col:nth-child(2) {
+  width: 25%;
+}
+.refundable-amount-table colgroup col:nth-child(3) {
+  width: 20%;
+}
+.refundable-amount-table colgroup col:nth-child(4) {
+  width: 20%;
+}
+.refundable-amount-table colgroup col:nth-child(5) {
+  width: 10%;
+}
+.refundable-amount-table thead {
+  padding-right: 100px;
+  border-top: 2px solid #a5a5a5;
+  background-color: #fbfbfb;
+  padding: 10px;
+}
+
+.refundable-amount-table tfoot {
+  font-weight: bold;
+}
+.refundable-amount-table thead tr th {
+  font-size: 12px;
+  color: #555;
+  padding: 10px 0;
+}
+.refundable-amount-table thead tr th:nth-child(3) {
+  padding: 10px;
+}
+
+.refundable-amount-table tbody tr td,
+.refundable-amount-table tfoot tr td {
+  font-size: 12px;
+  color: #555;
+  padding: 10px 0;
+}
+.refundable-amount-table thead tr th:first-child,
+.refundable-amount-table tbody tr td:first-child,
+.refundable-amount-table tfoot tr td:first-child {
+  text-align: center;
+}
+.refundable-amount-table thead tr th:nth-child(n + 2),
+.refundable-amount-table tbody tr td:nth-child(n + 2),
+.refundable-amount-table tfoot tr td:nth-child(n + 2) {
+  text-align: right;
+}
+.refundable-amount-table tfoot {
+  border-top: 1px solid #a5a5a5;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+/* 폼요소 */
+
+.join-form {
+  box-sizing: content-box;
+  border: 1px solid #e4e4e4;
+  background-color: #fbfbfb;
+  padding: 15px;
+}
+
+.join-form fieldset legend {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+  padding: 20px 0 10px;
+}
+
+.join-form fieldset input,
+.join-form fieldset select {
+  box-sizing: border-box;
+  border: 1px solid #e4e4e4;
+  font-size: 12px;
+  padding: 8px;
+  color: #000;
+}
+.join-form .join-form-id input,
+.join-form .join-form-password input,
+.join-form .join-form-name input,
+.join-form .join-form-email input {
+  width: 100%;
+}
+
+.join-form .join-form-birthdate {
+  font-size: 0;
+}
+.join-form .join-form-birthdate select {
+  width: 33%;
+}
+.join-form .join-form-birthdate select:nth-child(n + 3) {
+  margin-left: 0.5%;
+}
+
+.join-form .join-form-tel {
+  font-size: 0;
+}
+
+.join-form .join-form-tel input:nth-child(2) {
+  width: 79%;
+}
+
+.join-form .join-form-tel button {
+  vertical-align: top;
+  padding: 7px 0px;
+  margin-left: 1%;
+  width: 20%;
+  border: 1px solid #08a600;
+  background-color: #4ec53d;
+  font-size: 12px;
+  color: #fff;
+}
+.join-form .join-form-tel button:hover {
+  cursor: pointer;
+}
+.join-form .join-form-tel input:nth-child(4) {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.join-form .join-form-hobby label {
+  margin-right: 58px;
+}
+
+.join-form .join-form-hobby label:last-child {
+  margin-right: 0px;
+}
+
+.join-form .join-form-greeting textarea {
+  border: 1px solid #d1d1d1;
+  height: 100px;
+  font-size: 12px;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.join-form button[type="submit"] {
+  vertical-align: top;
+  padding: 10px 0px;
+  width: 100%;
+  border: 1px solid #08a600;
+  background-color: #4ec53d;
+  font-size: 16px;
+  color: #fff;
+  margin-top: 15px;
+}
+
+.join-form button[type="submit"]:hover {
+  cursor: pointer;
+}
+.search-results {
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  padding: 15px;
+  padding-bottom: 30px;
+}
+.search-results dt {
+  font-size: 32px;
+  margin: 40px 0px;
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+}
+
+.search-results dd {
+  margin-bottom: 15px;
+}
+.search-results dd strong {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
+
+.search-results dd em {
+  font-size: 12px;
+  color: #559bfa;
+}
+
+.search-results dd p {
+  margin-top: 8px;
+}
+.real-time-search {
+  width: 30%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #e4e4e4;
+}
+
+.component-item:nth-child(4) h4:nth-child(n + 2) {
+  margin-top: 40px;
+}
+.real-time-search li {
+  margin-bottom: 8px;
+}
+
+.real-time-search li:last-child {
+  margin-bottom: 0;
+}
+.real-time-search li a {
+  text-decoration: none;
+  font-size: 12px;
+  color: #000;
+}
+.real-time-search li a:hover {
+  text-decoration: underline;
+}
+.real-time-search li a span {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  font-size: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 3px 0;
+  color: #666;
+  margin-right: 10px;
+}
+.guide-cookie-use {
+  border: 1px solid #e4e4e4;
+  padding: 20px 20px 20px 40px;
+  list-style: disc;
+}
+.guide-cookie-use li {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.guide-cookie-use li:first-child {
+  font-weight: bold;
+}
+
+.guide-cookie-use li:first-child a {
+  color: #559bfa;
+  text-decoration: none;
+}
+
+.guide-cookie-use li:nth-child(n + 2) a {
+  color: #559bfa;
+  text-decoration: underline;
+}
+.guide-cookie-use li strong {
+  color: #ec5336;
+}
+.guide-cookie-use li:last-child {
+  margin-bottom: 0px;
+}
+
+.news {
+  border: 1px solid #e4e4e4;
+  font-size: 0;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.news article a img {
+  float: left;
+}
+
+.news article {
+  width: 100%;
+  color: #000;
+}
+
+.news article h5 {
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.news article p {
+  font-size: 12px;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+.news .thumbnail-true {
+  height: 80px;
+}
+.news .thumbnail-true h5 {
+  width: calc(100% - 80px);
+}
+.news .thumbnail-true p {
+  width: calc(100% - 80px);
+}
+
+.news hr {
+  margin: 20px 0;
+}
+.webtoon {
+  border: 1px solid #e4e4e4;
+  font-size: 0;
+  padding: 20px;
+  padding-right: 21px;
+}
+
+.webtoon .webtoon-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+.webtoon .webtoon-item a {
+  text-decoration: none;
+}
+.webtoon .webtoon-item:nth-child(3n) {
+  margin-right: 0px;
+}
+.webtoon .webtoon-item a h6 {
+  display: block;
+  margin: 5px 0;
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
+
+.webtoon .webtoon-item a h6:hover {
+  text-decoration: underline;
+}
+
+.webtoon .webtoon-item a h6 span {
+  display: inline-block;
+  padding: 3px 4px;
+  font-size: 10px;
+  color: #fff;
+}
+.webtoon .webtoon-item a h6 .cutoon {
+  border: 1px solid #71b036;
+  background-color: #80c83d;
+}
+.webtoon .webtoon-item a h6 .smart-phone {
+  border: 1px solid #df4e28;
+  background-color: #ec5336;
+}
+.webtoon .webtoon-item a p {
+  display: block;
+  font-size: 12px;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.webtoon .webtoon-item a p:hover {
+  text-decoration: underline;
+}
+.footer {
   min-width: 1080px;
   border-top: 1px solid #d1d1d1;
   text-align: center;
 }
-footer address {
+.footer address {
   margin-top: 30px;
   font-size: 12px;
   color: #999;
 }
-footer address,
-footer p {
+.footer address,
+.footer p {
+  margin-bottom: 12px;
   font-style: normal;
   font-size: 12px;
   color: #000;
-}
-footer p strong {
-  font-weight: 400;
 }
