@@ -181,10 +181,12 @@
           <h3>폼 요소</h3>
           <div class="component-item-body">
             <h4>회원가입</h4>
-            <form class="join-form">
+            <form method="post" class="join-form">
+              <!--  method="post" 추가했습니다. -->
               <fieldset class="join-form-id">
-                <legend>아이디</legend>
+                <label for="join_form_id">아이디</label>
                 <input
+                  id="join_form_id"
                   name="id"
                   type="text"
                   minlength="7"
@@ -193,12 +195,18 @@
                 />
               </fieldset>
               <fieldset class="join-form-password">
-                <legend>비밀번호</legend>
-                <input name="password" type="password" required />
+                <label for="join_form_password">비밀번호</label>
+                <!-- label 연결했습니다. -->
+                <input
+                  id="join_form_password"
+                  name="password"
+                  type="password"
+                  required
+                />
               </fieldset>
               <fieldset class="join-form-name">
-                <legend>이름</legend>
-                <input type="text" required />
+                <label for="join_form_name">이름</label>
+                <input id="join_form_name" type="text" required />
               </fieldset>
               <fieldset class="join-form-birthdate">
                 <legend>생년월일</legend>
@@ -220,16 +228,23 @@
                 <label for="female">여자</label>
               </fieldset>
               <fieldset class="join-form-email">
-                <legend>이메일</legend>
+                <label for="join_form_email">이메일</label>
                 <input
+                  id="join_form_email"
                   type="email"
                   placeholder="이메일 주소에 '@'를 포함해주세요."
                 />
               </fieldset>
               <fieldset class="join-form-tel">
-                <legend>휴대전화</legend>
-                <input type="tel" placeholder="숫자만 입력해주세요." />
-                <button>인증번호 받기</button>
+                <label for="join_form_tel">휴대전화</label>
+                <br>
+                <input
+                  id="join_form_tel"
+                  type="tel"
+                  placeholder="숫자만 입력해주세요."
+                />
+                <button type="button">인증번호 받기</button>
+                <!-- type="button" 추가했습니다. -->
                 <input type="text" placeholder="인증번호를 입력해주세요." />
               </fieldset>
               <fieldset class="join-form-hobby">
@@ -250,12 +265,17 @@
                 <label for="hobby_option07">영화</label>
                 <input type="checkbox" id="hobby_option08" />
                 <label for="hobby_option08">독서</label>
+                <!-- 
+                  상위 요소에 font 사이즈를 0으로 주고 하위에 margin을 수정했습니다. 제 컴퓨터에서는 잘보이는데 잘 모르겠습니다. 수정전 에도 제컴퓨터에는 문제없이 출려 됬었어서요..
+                  이런 것들을 구현할때 저는 보통 flex between을 보통 쓰는데 그게 나을까요? 뭔가 반응형 css는 지금 과제할때 안쓰는게 좋을 것 같아서요 
+                -->
               </fieldset>
               <fieldset class="join-form-greeting">
                 <legend>가입하기</legend>
                 <textarea></textarea>
               </fieldset>
               <button type="submit">가입하기</button>
+              <!-- 수정했습니다. -->
             </form>
           </div>
         </article>
@@ -351,9 +371,9 @@
               <h5>뉴스</h5>
               <article class="thumbnail-true">
                 <a href="#"
-                  ><img src="./image/thumbnail1.jpg" alt="thumbnail1"
+                  ><img src="./image/thumbnail1.jpg" alt="썸네일1"
                 /></a>
-
+                <!-- 한글로 수정했습니다. -->
                 <h5>
                   <a href="#"
                     >[날씨] 내일도 35도 안팎 폭염・내륙 소나기⋯습도 높아
@@ -384,7 +404,7 @@
               <hr />
               <article class="thumbnail-true">
                 <a href="#">
-                  <img src="./image/thumbnail1.jpg" alt="thumbnail1" />
+                  <img src="./image/thumbnail1.jpg" alt="썸네일2" />
                 </a>
                 <h5>
                   <a href="#"

@@ -133,8 +133,8 @@ table {
 /* 애스터리크(*) 지웠습니다 */
 
 body {
-  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   margin: 0;
+  /* font-size 0 으로줄 때 폰트가 없어져서 각각넣어줬습니다. */
 }
 .header {
   min-width: 1080px;
@@ -144,6 +144,7 @@ body {
 }
 /* 블록레벨 태그 height 100%는 아닌것 같습니다. */
 .header h1 {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   color: #fff;
   margin: 0 auto;
   width: 1080px;
@@ -167,6 +168,7 @@ body {
   display: inline-block;
 }
 .main .component-nav li a {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   display: inline-block;
   text-align: center;
   width: 324px;
@@ -188,6 +190,7 @@ body {
 }
 
 .main .component h2 {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   margin-top: 53.4px;
   margin-bottom: 23.4px;
   font-size: 20px;
@@ -201,6 +204,7 @@ body {
   margin-bottom: 30px;
 }
 .main .component .component-item h3 {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   box-sizing: border-box;
   border: 1px solid #d1d1d1;
   padding: 15px;
@@ -220,6 +224,7 @@ body {
 }
 
 .component-item .component-item-body h4 {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 14px;
   color: #000;
   font-weight: bold;
@@ -231,6 +236,7 @@ body {
   width: 100%;
 }
 .kid-size-table caption {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 14px;
   text-align: left;
   color: #000;
@@ -271,6 +277,7 @@ body {
 }
 .kid-size-table th,
 .kid-size-table td {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 12px;
   border: 1px solid #e4e4e4;
   text-align: center;
@@ -287,9 +294,10 @@ body {
   width: 100%;
 }
 .refundable-amount-table caption {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-weight: bold;
   font-size: 14px;
-  columns: #000;
+  color: #000;
   font-weight: bold;
   text-align: left;
   margin: 40px 0 14px;
@@ -321,6 +329,7 @@ body {
   font-weight: bold;
 }
 .refundable-amount-table thead tr th {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 12px;
   color: #555;
   padding: 10px 0;
@@ -331,6 +340,7 @@ body {
 
 .refundable-amount-table tbody tr td,
 .refundable-amount-table tfoot tr td {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 12px;
   color: #555;
   padding: 10px 0;
@@ -359,7 +369,13 @@ body {
   padding: 15px;
 }
 
-.join-form fieldset legend {
+.join-form fieldset {
+  font-size: 0;
+}
+.join-form fieldset legend,
+.join-form fieldset > label {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
+  display: inline-block;
   font-size: 14px;
   color: #000;
   font-weight: bold;
@@ -368,6 +384,7 @@ body {
 
 .join-form fieldset input,
 .join-form fieldset select {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   box-sizing: border-box;
   border: 1px solid #e4e4e4;
   font-size: 12px;
@@ -395,13 +412,14 @@ body {
   font-size: 0;
 }
 
-.join-form .join-form-tel input:nth-child(2) {
+.join-form .join-form-tel input:nth-child(3) {
   width: 79%;
 }
 
 .join-form .join-form-tel button {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   vertical-align: top;
-  padding: 7px 0px;
+  padding: 8px 0px;
   margin-left: 1%;
   width: 20%;
   border: 1px solid #08a600;
@@ -412,20 +430,26 @@ body {
 .join-form .join-form-tel button:hover {
   cursor: pointer;
 }
-.join-form .join-form-tel input:nth-child(4) {
+.join-form .join-form-tel input:nth-child(5) {
   margin-top: 5px;
   width: 100%;
 }
 
 .join-form .join-form-hobby label {
-  margin-right: 58px;
+  padding: 0;
+  margin-right: 75px;
 }
 
+.join-form .join-form-hobby input {
+  margin: 1px 3px;
+  vertical-align: top;
+}
 .join-form .join-form-hobby label:last-child {
   margin-right: 0px;
 }
 
 .join-form .join-form-greeting textarea {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   border: 1px solid #d1d1d1;
   height: 100px;
   font-size: 12px;
@@ -434,6 +458,7 @@ body {
   box-sizing: border-box;
 }
 .join-form button[type="submit"] {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   vertical-align: top;
   padding: 10px 0px;
   width: 100%;
@@ -448,12 +473,14 @@ body {
   cursor: pointer;
 }
 .search-results {
+  font-size: 0;
   border: 1px solid #e4e4e4;
   box-sizing: border-box;
   padding: 15px;
   padding-bottom: 30px;
 }
 .search-results dt {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 32px;
   margin: 40px 0px;
   text-align: center;
@@ -462,20 +489,24 @@ body {
 }
 
 .search-results dd {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .search-results dd strong {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 14px;
   color: #000;
   font-weight: bold;
 }
 
 .search-results dd em {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 12px;
   color: #559bfa;
 }
 
 .search-results dd p {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
+  font-size: 12px;
   margin-top: 8px;
 }
 .real-time-search {
@@ -496,6 +527,7 @@ body {
   margin-bottom: 0;
 }
 .real-time-search li a {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   text-decoration: none;
   font-size: 12px;
   color: #000;
@@ -504,6 +536,7 @@ body {
   text-decoration: underline;
 }
 .real-time-search li a span {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   width: 17px;
   height: 17px;
   display: inline-block;
@@ -521,6 +554,7 @@ body {
   list-style: disc;
 }
 .guide-cookie-use li {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 12px;
   margin-bottom: 15px;
 }
@@ -546,6 +580,7 @@ body {
 }
 
 .news {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   border: 1px solid #e4e4e4;
   font-size: 0;
   box-sizing: border-box;
@@ -561,6 +596,7 @@ body {
 }
 
 .news article h5 {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   width: 100%;
   font-size: 14px;
   font-weight: bold;
@@ -570,6 +606,7 @@ body {
 }
 
 .news article p {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 12px;
   display: inline-block;
   width: 100%;
@@ -607,6 +644,7 @@ body {
   margin-right: 0px;
 }
 .webtoon .webtoon-item a h6 {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   display: block;
   margin: 5px 0;
   font-size: 14px;
@@ -619,6 +657,7 @@ body {
 }
 
 .webtoon .webtoon-item a h6 span {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   display: inline-block;
   padding: 3px 4px;
   font-size: 10px;
@@ -633,6 +672,7 @@ body {
   background-color: #ec5336;
 }
 .webtoon .webtoon-item a p {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   display: block;
   font-size: 12px;
   color: #000;
@@ -648,12 +688,14 @@ body {
   text-align: center;
 }
 .footer address {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   margin-top: 30px;
   font-size: 12px;
   color: #999;
 }
 .footer address,
 .footer p {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   margin-bottom: 12px;
   font-style: normal;
   font-size: 12px;
