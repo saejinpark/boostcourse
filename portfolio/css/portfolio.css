@@ -398,6 +398,17 @@ body {
   width: 100%;
 }
 
+.join-form .join-form-gender input {
+  margin: 1px 5px 1px 3px;
+  vertical-align: top;
+}
+.join-form .join-form-gender label {
+  padding: 0;
+}
+
+.join-form .join-form-gender label:nth-child(3) {
+  margin-right: 60px;
+}
 .join-form .join-form-birthdate {
   font-size: 0;
 }
@@ -435,14 +446,14 @@ body {
   width: 100%;
 }
 
-.join-form .join-form-hobby label {
-  padding: 0;
-  margin-right: 75px;
+.join-form .join-form-hobby input {
+  margin: 1px 5px 1px 3px;
+  vertical-align: top;
 }
 
-.join-form .join-form-hobby input {
-  margin: 1px 3px;
-  vertical-align: top;
+.join-form .join-form-hobby label {
+  padding: 0;
+  margin-right: 60px;
 }
 .join-form .join-form-hobby label:last-child {
   margin-right: 0px;
