@@ -616,6 +616,9 @@ body {
   padding: 5px;
 }
 
+.news article h5 a {
+  font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
+}
 .news article p {
   font-family: "나눔 고딕", NanumGothic, "돋움", Dotum, sans-serif;
   font-size: 12px;
@@ -645,6 +648,7 @@ body {
 }
 
 .webtoon .webtoon-item {
+  vertical-align: top;
   display: inline-block;
   margin-right: 20px;
 }
