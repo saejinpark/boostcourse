@@ -39,11 +39,6 @@ ol, ul {
 blockquote, q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -51,3 +46,47 @@ table {
 
 /* reset */
 
+.blind {
+    overflow: hidden;
+    position: absolute;
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+  }
+
+body {
+    width: 320px;
+}
+.header {
+    background-color: blueviolet;
+}
+.header .header-inner {
+    width: 100%;
+    max-width: 1024px;
+}
+
+.header .header-inner figure {
+    float: left;
+    width: 114px;
+    height: 50px;
+    background: url(../image/logo_m.png) no-repeat center center;
+    background-size: 50% auto;
+    background-color: burlywood;
+}
+.header .header-inner nav {
+    height: 100%;
+    float: right;
+    background-color: burlywood;
+}
+.header .header-inner::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+@media (min-width:320px) and (max-width:728px){
+}
+@media (min-width:728px) and (max-width:1024px) {
+}
+@media (min-width:1024px) {
+}
