@@ -15,29 +15,27 @@
             <figcaption class="blind">foodwith</figcaption>
           </figure>
         </a>
-        <button class="gnb" href="#">
-          <figure>
-            <figcaption class="blind">토글 네비게이션 버튼</figcaption>
-          </figure>
+        <button class="gnb">
+          <span class="blind">네비게이션 토글 버튼</span>
         </button>
         <nav>
-            <ul>
+          <ul>
             <li>
-                <a href="">About</a>
+              <a href="">About</a>
             </li>
             <li>
-                <a href="">Work</a>
+              <a href="">Work</a>
             </li>
             <li>
-                <a href="">Content</a>
+              <a href="">Content</a>
             </li>
-            </ul>
+          </ul>
         </nav>
       </div>
     </header>
-    <main>
+    <main class="main">
       <section class="banner">
-        <div class="main-inner">
+        <div class="inner">
           <figure>
             <img
               src="./image/banner_strawberry.png"
@@ -46,11 +44,11 @@
             />
           </figure>
           <h1>
-            오븐 없이도 베이킹 가능! 달콤 상큼 봄맞이 노오븐 딸 기 케이크
-            만들기!
+            오븐 없이도 베이킹 가능! 달콤 상큼 봄맞이 노오븐 딸기 케이크 만들기!
           </h1>
           <hr />
           <article class="profile">
+            <h2 class="blind">profile</h2>
             <figure>
               <img
                 src="./image/thumbnail_profile.jpg"
@@ -64,7 +62,7 @@
       </section>
       <section class="list">
         <h1>레시피</h1>
-        <div class="main-inner">
+        <div class="inner">
           <ul>
             <li>
               <figure>
@@ -109,10 +107,10 @@
         </div>
       </section>
       <section class="form">
-        <div class="main-inner">
+        <div class="inner">
           <h1>전하고 싶은 말을 남겨주세요.</h1>
           <p>답변을 원하시면 이메일을 꼭 적어주세요.</p>
-          <form action="">
+          <form method="post">
             <fieldset class="form-nickname">
               <legend>닉네임</legend>
               <input type="text" placeholder="NICKNAME" />
@@ -121,75 +119,76 @@
               <legend>이메일</legend>
               <input type="text" placeholder="ID" />
               <span>@</span>
-              <select name="" id="">
-                <option value="">선택하세요</option>
+              <select name="email-select" id="email-select">
+                <option value="0">선택하세요</option>
               </select>
             </fieldset>
             <textarea
               rows="7"
-              placeholder="전하고 싶은 말을 100자 이내로 적어주세요"
+              placeholder="전하고 싶은 말을 100자 이내로 적어주세요."
             ></textarea>
             <br />
             <button>전송하기</button>
           </form>
         </div>
       </section>
-      <section class="notice">
-        <div class="main-inner">
-          <h1>공지사항</h1>
-          <br />
-          <a class="notice-info"
-            >다양한 소식을 담은 foodwith! 정식 오픈을 안내드립니다.</a
-          >
-          <a class="notice-more">더보기</a>
-        </div>
-      </section>
-      <section class="aside">
-        <div class="main-inner">
-          <ul class="aside-list">
-            <li>
-              <h2>Creators</h2>
-              <ul>
-                <li>
-                  <a href="">푸드 크리에이터</a>
-                </li>
-                <li>
-                  <a href="">푸드 비즈니스</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h2>Partners</h2>
-              <ul>
-                <li>
-                  <a href="">푸드 파트너</a>
-                </li>
-                <li>
-                  <a href="">푸드 스토어</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+      <section class="link">
+        <h1 class="blind">링크</h1>
+        <div class="inner">
+          <article class="notice">
+            <h2>공지사항</h2>
+            <br />
+            <a href="#" class="notice-info"
+              >다양한 소식을 담은 foodwith! 정식 오픈을 안내드립니다.</a
+            >
+            <a href="#" class="notice-more">더보기</a>
+          </article>
+          <article class="aside">
+            <h2 class="blind">외부</h2>
+            <ul class="aside-list">
+              <li class="aside-item">
+                <h2>Creators</h2>
+                <ul>
+                  <li>
+                    <a href="">푸드 크리에이터</a>
+                  </li>
+                  <li>
+                    <a href="">푸드 비즈니스</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="aside-item">
+                <h2>Partners</h2>
+                <ul>
+                  <li>
+                    <a href="">푸드 파트너</a>
+                  </li>
+                  <li>
+                    <a href="">푸드 스토어</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </article>
         </div>
       </section>
     </main>
-    <footer>
-        <ul>
-          <li>
-            <a href="#">회사소개</a>
-          </li>
-          <li>
-            <a href="#">인재채용</a>
-          </li>
-          <li>
-            <a href="#">이용약관</a>
-          </li>
-          <li>
-            <a href="#">고객센터</a>
-          </li>
-        </ul>
-        <address>© <strong>foodwith</strong> All Right Reserved.</address>
-      </div>
+    <footer class="footer">
+      <ul>
+        <li>
+          <a href="#">회사소개</a>
+        </li>
+        <li>
+          <a href="#">인재채용</a>
+        </li>
+        <li>
+          <a href="#">이용약관</a>
+        </li>
+        <li>
+          <a href="#">고객센터</a>
+        </li>
+      </ul>
+      <address>© <strong>foodwith</strong> All Right Reserved.</address>
     </footer>
   </body>
 </html>
