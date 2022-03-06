@@ -35,7 +35,7 @@
     </header>
     <main class="main">
       <section class="banner">
-        <div class="inner">
+        <a href="#" class="inner">
           <figure>
             <img
               src="./image/banner_strawberry.png"
@@ -58,66 +58,82 @@
             </figure>
             <span>FULLMOON</span>
           </article>
-        </div>
+        </a>
       </section>
       <section class="list">
         <h1>레시피</h1>
         <div class="inner">
           <ul>
             <li>
-              <figure>
-                <img src="./image/thumbnail_pumpkin.jpg" alt="" />
-                <figcaption>
-                  따뜻 담백 호박! 든든한 호박죽으로 한끼 해결하기
-                </figcaption>
-              </figure>
+              <a href="#">
+                <figure>
+                  <img src="./image/thumbnail_pumpkin.jpg" alt="" />
+                  <figcaption>
+                    따뜻 담백 호박! 든든한 호박죽으로 한끼 해결하기
+                  </figcaption>
+                </figure>
+              </a>
             </li>
             <li>
-              <figure>
-                <img src="./image/thumbnail_lime.jpg" alt="" />
-                <figcaption>상큼한 라임청 담기</figcaption>
-              </figure>
+              <a href="#">
+                <figure>
+                  <img src="./image/thumbnail_lime.jpg" alt="" />
+                  <figcaption>상큼한 라임청 담기</figcaption>
+                </figure>
+              </a>
             </li>
             <li>
-              <figure>
-                <img src="./image/thumbnail_paprika.jpg" alt="" />
-                <figcaption>아삭아삭 빨간 피망 볶음 레시피</figcaption>
-              </figure>
+              <a href="#">
+                <figure>
+                  <img src="./image/thumbnail_paprika.jpg" alt="" />
+                  <figcaption>아삭아삭 빨간 피망 볶음 레시피</figcaption>
+                </figure>
+              </a>
             </li>
             <li>
-              <figure>
-                <img src="./image/thumbnail_garlic.jpg" alt="" />
-                <figcaption>바삭바삭 마늘빵 만들기</figcaption>
-              </figure>
+              <a href="#">
+                <figure>
+                  <img src="./image/thumbnail_garlic.jpg" alt="" />
+                  <figcaption>바삭바삭 마늘빵 만들기</figcaption>
+                </figure>
+              </a>
             </li>
             <li>
-              <figure>
-                <img src="./image/thumbnail_onion.jpg" alt="" />
-                <figcaption>자색 빛깔 적양파 피클 담기</figcaption>
-              </figure>
+              <a href="#">
+                <figure>
+                  <img src="./image/thumbnail_onion.jpg" alt="" />
+                  <figcaption>자색 빛깔 적양파 피클 담기</figcaption>
+                </figure>
+              </a>
             </li>
             <li>
-              <figure>
-                <img src="./image/thumbnail_avocado.jpg" alt="" />
-                <figcaption>건강한 아보카도 샌드위치 만들기</figcaption>
-              </figure>
+              <a href="#">
+                <figure>
+                  <img src="./image/thumbnail_avocado.jpg" alt="" />
+                  <figcaption>건강한 아보카도 샌드위치 만들기</figcaption>
+                </figure>
+              </a>
             </li>
           </ul>
-          <button><span></span> 더보기</button>
+          <button>
+            <span class="list-moreicon"></span><span>더보기</span>
+          </button>
         </div>
       </section>
       <section class="form">
         <div class="inner">
-          <h1>전하고 싶은 말을 남겨주세요.</h1>
-          <p>답변을 원하시면 이메일을 꼭 적어주세요.</p>
+          <div class="text">
+            <h1>전하고 싶은 말을 남겨주세요.</h1>
+            <p>답변을 원하시면 이메일을 꼭 적어주세요.</p>
+          </div>
           <form method="post">
             <fieldset class="form-nickname">
-              <legend>닉네임</legend>
-              <input type="text" placeholder="NICKNAME" />
+              <legend><label for="nickname">닉네임</label></legend>
+              <input id="nickname" type="text" placeholder="NICKNAME" />
             </fieldset>
             <fieldset class="form-email">
-              <legend>이메일</legend>
-              <input type="text" placeholder="ID" />
+              <legend><label for="email">이메일</label></legend>
+              <input id="email" type="text" placeholder="ID" />
               <span>@</span>
               <select name="email-select" id="email-select">
                 <option value="0">선택하세요</option>
@@ -150,10 +166,10 @@
                 <h2>Creators</h2>
                 <ul>
                   <li>
-                    <a href="">푸드 크리에이터</a>
+                    <a href="#">푸드 크리에이터</a>
                   </li>
                   <li>
-                    <a href="">푸드 비즈니스</a>
+                    <a href="#">푸드 비즈니스</a>
                   </li>
                 </ul>
               </li>
@@ -161,10 +177,10 @@
                 <h2>Partners</h2>
                 <ul>
                   <li>
-                    <a href="">푸드 파트너</a>
+                    <a href="#">푸드 파트너</a>
                   </li>
                   <li>
-                    <a href="">푸드 스토어</a>
+                    <a href="#">푸드 스토어</a>
                   </li>
                 </ul>
               </li>
