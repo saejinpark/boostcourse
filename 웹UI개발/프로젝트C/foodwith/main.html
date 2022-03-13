@@ -40,7 +40,7 @@
             <img
               src="./image/banner_strawberry.png"
               class="banner-img"
-              alt="배너 이미지"
+              alt="배너"
             />
           </figure>
           <h1>
@@ -52,7 +52,7 @@
             <figure>
               <img
                 src="./image/thumbnail_profile.jpg"
-                class="Thumbnail"
+                class="thumbnail"
                 alt=""
               />
             </figure>
@@ -129,11 +129,11 @@
           <form method="post">
             <fieldset class="form-nickname">
               <legend><label for="nickname">닉네임</label></legend>
-               <input id="nickname" type="text" placeholder="NICKNAME" />
+               <input name="nickname" id="nickname" type="text" placeholder="NICKNAME" />
             </fieldset>
             <fieldset class="form-email">
               <legend><label for="email">이메일</label></legend>
-              <input id="email" type="text" placeholder="ID" />
+              <input name="email" id="email" type="text" placeholder="ID" />
               <span>@</span>
               <select name="email-select" id="email-select">
                 <option value="0">선택하세요</option>
@@ -141,6 +141,7 @@
             </fieldset>
             <textarea
               rows="7"
+              maxlength="100"
               placeholder="전하고 싶은 말을 100자 이내로 적어주세요."
             ></textarea>
             <br />
