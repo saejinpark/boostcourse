@@ -5,4 +5,6 @@ public class CategoryDaoSqls {
 
 	public static final String CATEGORY__SELECT_COUNT = "SELECT count(*) FROM category";
 	
+	public static final String CATEGORY__SELECT_BY__ID = "SELECT * FROM category WHERE id = :id";
+	
 }

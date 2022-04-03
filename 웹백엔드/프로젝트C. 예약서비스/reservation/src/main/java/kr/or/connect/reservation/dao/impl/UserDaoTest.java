@@ -14,7 +14,7 @@ import kr.or.connect.reservation.dao.UserDao;
 import kr.or.connect.reservation.dto.User;
 
 public class UserDaoTest {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class); 
 		
 		UserDao userDao = ac.getBean(UserDao.class);

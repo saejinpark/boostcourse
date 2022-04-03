@@ -4,17 +4,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
-import kr.or.connect.reservation.dao.ProductDao;
+import kr.or.connect.reservation.dao.ProductImageDao;
 
-public class ProductDaoTest {
+public class ProductImageDaoTest {
 	public static void main(String[] args) {
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-
-		ProductDao productDao = ac.getBean(ProductDao.class);
-
-//		System.out.println(productDao.selectAll());
-//		System.out.println(productDao.countCategoryId());
-//		System.out.println(productDao.countCategoryId(1));
-		System.out.println(productDao.selectByCategoryIdLimitStart(1, 30, 4).size());
+		ProductImageDao productImageDao = ac.getBean(ProductImageDao.class);
+		
+		System.out.println(productImageDao.selectByProductId(1));
+		System.out.println(productImageDao.selectByProductId(1).stream().map(i -> i.getFile_id()));
 	}
 }

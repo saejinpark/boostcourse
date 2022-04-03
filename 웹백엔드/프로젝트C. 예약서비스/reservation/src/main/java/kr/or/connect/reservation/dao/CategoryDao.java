@@ -25,11 +25,16 @@ public class CategoryDao {
     }
     
     public List<Category> selectAll() {
-    		Map<String, Integer> params = new HashMap<>();
-        return jdbc.query(CATEGORY__SELECT_ALL, params, rowMapper);
+        return jdbc.query(CATEGORY__SELECT_ALL, Collections.emptyMap(), rowMapper);
     }
     
-    public int selrctCount() {
+    public int selectCount() {
         return jdbc.queryForObject(CATEGORY__SELECT_COUNT, Collections.emptyMap(), Integer.class);
+    }
+
+    public Category selectById(Integer id) {
+    	Map<String, Integer> params = new HashMap<>();
+    	params.put("id", id);
+        return jdbc.queryForObject(CATEGORY__SELECT_BY__ID, params, rowMapper);
     }
 }
