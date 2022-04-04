@@ -10,23 +10,23 @@ import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.CategoryDao;
 import kr.or.connect.reservation.dao.ProductDao;
-import kr.or.connect.reservation.dto.Product;
+
 @Service
 public class CategoriesService {
 
 	@Autowired
 	CategoryDao categoryDao;
-	
+
 	@Autowired
 	ProductDao productDao;
 
-	public Map<String, Object> getCategories(){
+	public Map<String, Object> getCategories() {
 		Map<String, Object> categories = new HashMap<>();
-		
+
 		categories.put("size", categoryDao.selectCount());
-		
-		List<Map<String, Object>> items = new ArrayList<Map<String,Object>>();
-		for(kr.or.connect.reservation.dto.Category category : categoryDao.selectAll()) {
+
+		List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
+		for (kr.or.connect.reservation.dto.Category category : categoryDao.selectAll()) {
 			Map<String, Object> item = new HashMap<String, Object>();
 			item.put("id", category.getId());
 			item.put("name", category.getName());

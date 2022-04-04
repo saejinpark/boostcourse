@@ -12,6 +12,5 @@ public class ProductImageDaoTest {
 		ProductImageDao productImageDao = ac.getBean(ProductImageDao.class);
 		
 		System.out.println(productImageDao.selectByProductId(1));
-		System.out.println(productImageDao.selectByProductId(1).stream().map(i -> i.getFile_id()));
 	}
 }

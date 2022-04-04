@@ -11,11 +11,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import kr.or.connect.reservation.dto.DisplayInfo;
 import kr.or.connect.reservation.dto.ProductImage;
 
-import static kr.or.connect.reservation.dao.DispalyInfoSqls.DISPLAY_INFO__SELECT_BY__PRODUCT_ID;
-import static kr.or.connect.reservation.dao.ProductImageSqls.*;
+import static kr.or.connect.reservation.dao.ProductImageDaoSqls.*;
 
 @Repository
 public class ProductImageDao {
@@ -31,4 +29,12 @@ public class ProductImageDao {
 		params.put("productId", productId);
 		return jdbc.query(PRODUCT_IMAGE__SELECT_BY__PRODUCT_ID, params, rowMapper);
 	}
+	
+	public ProductImage selectByProductIdTypeMa(Integer productId) {
+		Map<String, Integer> params = new HashMap<String, Integer>();
+		params.put("productId", productId);
+		return jdbc.queryForObject(PRODUCT_IMAGE__SELECT_BY__PRODUCT_ID__TYPE_MA, params, rowMapper);
+	}
 }
+
+

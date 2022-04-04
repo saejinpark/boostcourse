@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dto.DisplayInfo;
 
-import static kr.or.connect.reservation.dao.DispalyInfoSqls.*;
+import static kr.or.connect.reservation.dao.DispalyInfoDaoSqls.*;
 
 @Repository
 public class DisplayInfoDao {

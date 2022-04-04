@@ -15,6 +15,6 @@ public class ProductDaoTest {
 //		System.out.println(productDao.selectAll());
 //		System.out.println(productDao.countCategoryId());
 //		System.out.println(productDao.countCategoryId(1));
-		System.out.println(productDao.selectByCategoryIdLimitStart(1, 30, 4).size());
+		System.out.println(productDao.selectAllLimitStart(30, 4).size());
 	}
 }
