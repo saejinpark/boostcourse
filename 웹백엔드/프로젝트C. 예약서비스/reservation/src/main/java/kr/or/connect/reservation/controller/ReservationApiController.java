@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import kr.or.connect.reservation.service.CategoriesService;
-import kr.or.connect.reservation.service.DisplayinfosDisplayIdService;
+import kr.or.connect.reservation.service.DisplayinfosByDisplayIdService;
 import kr.or.connect.reservation.service.DisplayinfosService;
 import kr.or.connect.reservation.service.PromotionsService;
+import kr.or.connect.reservation.service.CommentsService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -32,7 +33,11 @@ public class ReservationApiController {
 	PromotionsService promotionsService;
 
 	@Autowired
-	DisplayinfosDisplayIdService displayinfosDisplayIdService;
+	DisplayinfosByDisplayIdService displayinfosByDisplayIdService;
+	
+
+	@Autowired
+	CommentsService commentsService;
 	
 	@GetMapping("/categories")
 	@ApiOperation(value = "카테고리 목록", notes = "카테고리 목록 구하기")
@@ -45,6 +50,7 @@ public class ReservationApiController {
 	public Map<String, Object> displayinfos(
 			@ApiParam(value = "카테고리 아이디", required = false) @RequestParam(value = "categoryId", required = false) Integer categoryId,
 			@ApiParam(value = "시작지점", required = false) @RequestParam(value = "start", required = false) Integer start) {
+		
 		return displayinfosService.getDisplayinfos(categoryId, start);
 	}
 
@@ -57,7 +63,17 @@ public class ReservationApiController {
 
 	@GetMapping("/displayinfos/{displayId}")
 	@ApiOperation(value = "카테고리 전시 정보", notes = "카테고리 전시 정보 구하기")
-	public Map<String, Object> displayinfosDisplayId(@PathVariable("displayId") Integer displayId ) {
-		return displayinfosDisplayIdService.getDisplayinfosDisplayId(displayId);
+	public Map<String, Object> displayinfosDisplayId(@PathVariable("displayId") Integer displayId) {
+		return displayinfosByDisplayIdService.getDisplayinfosByDisplayId(displayId);
+	}
+	
+
+	@GetMapping("/comments")
+	@ApiOperation(value = "댓글 목록", notes = "댓글 목록 구하기")
+	public Map<String, Object> reservationUserComments(
+			@ApiParam(value = "물건 아이디", required = false) @RequestParam(value = "productId", required = false) Integer productId,
+			@ApiParam(value = "시작지점", required = false) @RequestParam(value = "start", required = false) Integer start
+		) {
+		return commentsService.getComments(productId, start);
 	}
 }

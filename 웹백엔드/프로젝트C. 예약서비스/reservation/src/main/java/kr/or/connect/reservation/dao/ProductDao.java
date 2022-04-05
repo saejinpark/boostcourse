@@ -31,11 +31,11 @@ public class ProductDao {
 		return jdbc.query(PRODUCT__SELECT_ALL, params, rowMapper);
 	}
 
-	public int count() {
-		return jdbc.queryForObject(PRODUCT__SELECT_COUNT, Collections.emptyMap(), Integer.class);
+	public int selectCountAll() {
+		return jdbc.queryForObject(PRODUCT__SELECT_COUNT_ALL, Collections.emptyMap(), Integer.class);
 	}
 	
-	public int countCategoryId(Integer category_id) {
+	public int selectCountByCategoryId(Integer category_id) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("category_id", category_id);
 		return jdbc.queryForObject(PRODUCT__SELECT_COUNT_BY__CATEGORY_ID, params, Integer.class);
@@ -44,15 +44,15 @@ public class ProductDao {
 	public List<Product> selectAllLimitStart(Integer start, Integer productCount) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("start", start);
-		params.put("productCount", productCount);
-		return jdbc.query(PRODUCT__SELECT__LIMIT_START, params, rowMapper);
+		params.put("count", productCount);
+		return jdbc.query(PRODUCT__SELECT_ALL__LIMIT_START_COUNT, params, rowMapper);
 	}
 	public List<Product> selectByCategoryIdLimitStart(Integer categoryId, Integer start, Integer productCount) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("categoryId", categoryId);
 		params.put("start", start);
-		params.put("productCount", productCount);
-		return jdbc.query(PRODUCT__SELECT_BY__CATEGORY_ID__LIMIT_START, params, rowMapper);
+		params.put("count", productCount);
+		return jdbc.query(PRODUCT__SELECT_BY__CATEGORY_ID__LIMIT_START_COUNT, params, rowMapper);
 	}
 	
 	public Product selectByProductId(Integer productId) {

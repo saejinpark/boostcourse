@@ -1,5 +1,6 @@
 package kr.or.connect.reservation.dao;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,13 @@ public class UserDao {
 	    }
 	    
 	    public List<User> selectAll() {
-	    		Map<String, Integer> params = new HashMap<>();
-	        return jdbc.query(USER__SELECT_ALL, params, rowMapper);
+	        return jdbc.query(USER__SELECT_ALL, Collections.emptyMap(), rowMapper);
+	    }
+	    
+
+	    public User selectById(Integer id) {
+	    	Map<String, Integer> params = new HashMap<>();
+	    	params.put("id", id);
+	        return jdbc.queryForObject(USER__SELECT_BY__ID, params, rowMapper);
 	    }
 }

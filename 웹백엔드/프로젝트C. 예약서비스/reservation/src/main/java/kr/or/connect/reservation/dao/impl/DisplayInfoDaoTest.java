@@ -15,3 +15,4 @@ public class DisplayInfoDaoTest {
 		System.out.println(displayInfoDao.selectByProductId(1));
 	}
 }
+ 

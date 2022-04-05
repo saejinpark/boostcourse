@@ -4,12 +4,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
-import kr.or.connect.reservation.dto.FileInfo;
+import kr.or.connect.reservation.dao.FileInfoDao;
 
 public class FileInfoDaoTest {
-	ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class); 
-	
-	FileInfo fileInfo = ac.getBean(FileInfo.class);
-	
-	
+	public static void main(String[] args) {
+
+		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+
+		FileInfoDao fileInfoDao = ac.getBean(FileInfoDao.class);
+
+		System.out.println(fileInfoDao.selectByFileId(1));
+	}
 }

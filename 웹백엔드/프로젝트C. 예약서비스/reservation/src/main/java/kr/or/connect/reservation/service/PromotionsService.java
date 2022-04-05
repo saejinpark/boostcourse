@@ -13,7 +13,6 @@ import kr.or.connect.reservation.dao.ProductDao;
 import kr.or.connect.reservation.dao.ProductImageDao;
 import kr.or.connect.reservation.dao.PromotionDao;
 import kr.or.connect.reservation.dto.Product;
-import kr.or.connect.reservation.dto.ProductImage;
 import kr.or.connect.reservation.dto.Promotion;
 
 @Service

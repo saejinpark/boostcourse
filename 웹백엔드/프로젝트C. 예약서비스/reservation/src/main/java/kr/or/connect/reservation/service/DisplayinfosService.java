@@ -15,7 +15,6 @@ import kr.or.connect.reservation.dao.ProductDao;
 import kr.or.connect.reservation.dao.ProductImageDao;
 import kr.or.connect.reservation.dto.DisplayInfo;
 import kr.or.connect.reservation.dto.Product;
-import kr.or.connect.reservation.dto.ProductImage;
 
 @Service
 public class DisplayinfosService {
@@ -44,10 +43,10 @@ public class DisplayinfosService {
 		List<Product> products;
 		if (categoryId == null) {
 			products = productDao.selectAllLimitStart(start, productCount);
-			displayinfos.put("totalCount ", productDao.count());
+			displayinfos.put("totalCount ", productDao.selectCountAll());
 		} else {
 			products = productDao.selectByCategoryIdLimitStart(categoryId, start, productCount);
-			displayinfos.put("totalCount ", productDao.countCategoryId(categoryId));
+			displayinfos.put("totalCount ", productDao.selectCountByCategoryId(categoryId));
 		}
 		displayinfos.put("productCount ", productCount);
 		List<Map<String, Object>> displayinfoProducts = new ArrayList<Map<String, Object>>();
@@ -74,7 +73,7 @@ public class DisplayinfosService {
 			displayinfoProduct.put("fileId", productImageDao.selectByProductIdTypeMa(product.getId()).getFile_id());
 			displayinfoProducts.add(displayinfoProduct);
 		}
-//		displayinfos.put("products ", products);
+		
 		displayinfos.put("products ", displayinfoProducts);
 		return displayinfos;
 	}

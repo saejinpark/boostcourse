@@ -30,7 +30,7 @@ public class CategoriesService {
 			Map<String, Object> item = new HashMap<String, Object>();
 			item.put("id", category.getId());
 			item.put("name", category.getName());
-			item.put("count", productDao.countCategoryId(category.getId()));
+			item.put("count", productDao.selectCountByCategoryId(category.getId()));
 			items.add(item);
 		}
 		categories.put("items", items);

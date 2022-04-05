@@ -12,9 +12,6 @@ public class ProductDaoTest {
 
 		ProductDao productDao = ac.getBean(ProductDao.class);
 
-//		System.out.println(productDao.selectAll());
-//		System.out.println(productDao.countCategoryId());
-//		System.out.println(productDao.countCategoryId(1));
 		System.out.println(productDao.selectAllLimitStart(30, 4).size());
 	}
 }

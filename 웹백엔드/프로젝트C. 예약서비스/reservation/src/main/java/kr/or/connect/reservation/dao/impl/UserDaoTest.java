@@ -13,6 +13,6 @@ public class UserDaoTest {
 		
 		UserDao userDao = ac.getBean(UserDao.class);
 
-		System.out.println(userDao.selectAll());
+		System.out.println(userDao.selectById(1));
 	}
 }
