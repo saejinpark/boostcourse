@@ -46,7 +46,7 @@ public class DisplayinfosService {
 
 		List<DisplayInfo> displayInfos = displayInfoDao.selectAll();
 
-		if (categoryId != null || categoryId.equals(0)) {
+		if (categoryId != null && categoryId != 0) {
 			displayInfos = displayInfos.stream().filter(
 					displayInfo -> productDao.selectById(displayInfo.getProductId()).getCategoryId().equals(categoryId))
 					.collect(Collectors.toList());
