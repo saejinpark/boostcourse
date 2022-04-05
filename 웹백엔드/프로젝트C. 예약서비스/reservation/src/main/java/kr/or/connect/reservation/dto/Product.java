@@ -7,10 +7,10 @@ import lombok.Data;
 @Data
 public class Product {
 	private Integer id;
-	private Integer category_id;
+	private Integer categoryId;
 	private String description;
 	private String content;
 	private String event;
-	private Date create_date;
-	private Date modify_date;
+	private Date createDate;
+	private Date modifyDate;
 }

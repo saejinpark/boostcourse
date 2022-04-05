@@ -1,6 +1,5 @@
 package kr.or.connect.reservation.dao;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public class ProductPriceDao {
 	public ProductPriceDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
-	
+
 	public List<ProductPrice> selectByProductId(Integer productId) {
 		Map<String, Integer> params = new HashMap<String, Integer>();
 		params.put("productId", productId);

@@ -23,7 +23,7 @@ public class CategoriesService {
 	public Map<String, Object> getCategories() {
 		Map<String, Object> categories = new HashMap<>();
 
-		categories.put("size", categoryDao.selectCount());
+		categories.put("size", categoryDao.selectCountAll());
 
 		List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
 		for (kr.or.connect.reservation.dto.Category category : categoryDao.selectAll()) {

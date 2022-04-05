@@ -8,14 +8,14 @@ import lombok.Data;
 public class DisplayInfo {
 
 	private Integer id;
-	private Integer product_id;
-	private String opening_hours;
-	private String place_name;
-	private String place_lot;
-	private String place_street;
+	private Integer productId;
+	private String openingHours;
+	private String placeName;
+	private String placeLot;
+	private String placeStreet;
 	private String tel;
 	private String homepage;
 	private String email;
-	private Date create_date;
-	private Date modify_date;
+	private Date createDate;
+	private Date modifyDate;
 }

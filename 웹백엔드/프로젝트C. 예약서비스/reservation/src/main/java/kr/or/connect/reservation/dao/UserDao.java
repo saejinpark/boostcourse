@@ -1,8 +1,6 @@
 package kr.or.connect.reservation.dao;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -17,21 +15,16 @@ import static kr.or.connect.reservation.dao.UserDaoSqls.*;
 
 @Repository
 public class UserDao {
-	 private NamedParameterJdbcTemplate jdbc;
-	    private RowMapper<User> rowMapper = BeanPropertyRowMapper.newInstance(User.class);
+	private NamedParameterJdbcTemplate jdbc;
+	private RowMapper<User> rowMapper = BeanPropertyRowMapper.newInstance(User.class);
 
-	    public UserDao(DataSource dataSource) {
-	        this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-	    }
-	    
-	    public List<User> selectAll() {
-	        return jdbc.query(USER__SELECT_ALL, Collections.emptyMap(), rowMapper);
-	    }
-	    
+	public UserDao(DataSource dataSource) {
+		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+	}
 
-	    public User selectById(Integer id) {
-	    	Map<String, Integer> params = new HashMap<>();
-	    	params.put("id", id);
-	        return jdbc.queryForObject(USER__SELECT_BY__ID, params, rowMapper);
-	    }
+	public User selectById(Integer id) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("id", id);
+		return jdbc.queryForObject(USER__SELECT_BY__ID, params, rowMapper);
+	}
 }

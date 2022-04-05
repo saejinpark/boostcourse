@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,46 +36,56 @@ public class DisplayinfosService {
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
 	public Map<String, Object> getDisplayinfos(Integer categoryId, Integer start) {
-		Map<String, Object> displayinfos = new HashMap<>();
+		Map<String, Object> apiDisplayinfos = new HashMap<>();
+
+		int totalcount = 0;
 		Integer productCount = 4;
+
 		if (start == null)
 			start = 0;
 
-		List<Product> products;
-		if (categoryId == null) {
-			products = productDao.selectAllLimitStart(start, productCount);
-			displayinfos.put("totalCount ", productDao.selectCountAll());
-		} else {
-			products = productDao.selectByCategoryIdLimitStart(categoryId, start, productCount);
-			displayinfos.put("totalCount ", productDao.selectCountByCategoryId(categoryId));
-		}
-		displayinfos.put("productCount ", productCount);
-		List<Map<String, Object>> displayinfoProducts = new ArrayList<Map<String, Object>>();
+		List<DisplayInfo> displayInfos = displayInfoDao.selectAll();
 
-		for (Product product : products) {
+		if (categoryId != null || categoryId.equals(0)) {
+			displayInfos = displayInfos.stream().filter(
+					displayInfo -> productDao.selectById(displayInfo.getProductId()).getCategoryId().equals(categoryId))
+					.collect(Collectors.toList());
+		}
+		totalcount = displayInfos.size();
+		
+		apiDisplayinfos.put("totalCount", totalcount);
+		apiDisplayinfos.put("productCount", productCount);
+
+		List<Map<String, Object>> displayinfoProducts = new ArrayList<Map<String, Object>>();
+		
+		for(int i=start.intValue(); i<totalcount; i++) {
+			DisplayInfo displayInfo = displayInfos.get(i);
 			Map<String, Object> displayinfoProduct = new HashMap<String, Object>();
-			DisplayInfo displayInfo = displayInfoDao.selectByProductId(product.getId());
+			Product product = productDao.selectById(displayInfo.getProductId());
 			displayinfoProduct.put("id", product.getId());
-			displayinfoProduct.put("categoryId", product.getCategory_id());
+			displayinfoProduct.put("categoryId", product.getCategoryId());
 			displayinfoProduct.put("displayInfoId", displayInfo.getId());
-			displayinfoProduct.put("name", categoryDao.selectById(product.getCategory_id()).getName());
+			displayinfoProduct.put("name", categoryDao.selectById(product.getCategoryId()).getName());
 			displayinfoProduct.put("description", product.getDescription());
 			displayinfoProduct.put("content", product.getContent());
 			displayinfoProduct.put("event", product.getEvent());
-			displayinfoProduct.put("openingHours", displayInfo.getOpening_hours());
-			displayinfoProduct.put("placeName", displayInfo.getPlace_name());
-			displayinfoProduct.put("placeLot", displayInfo.getPlace_lot());
-			displayinfoProduct.put("placeStreet", displayInfo.getPlace_street());
+			displayinfoProduct.put("openingHours", displayInfo.getOpeningHours());
+			displayinfoProduct.put("placeName", displayInfo.getPlaceName());
+			displayinfoProduct.put("placeLot", displayInfo.getPlaceLot());
+			displayinfoProduct.put("placeStreet", displayInfo.getPlaceStreet());
 			displayinfoProduct.put("tel", displayInfo.getTel());
 			displayinfoProduct.put("homepage", displayInfo.getHomepage());
 			displayinfoProduct.put("email", displayInfo.getEmail());
-			displayinfoProduct.put("createDate", simpleDateFormat.format(product.getCreate_date()));
-			displayinfoProduct.put("modifyDate", simpleDateFormat.format(product.getModify_date()));
-			displayinfoProduct.put("fileId", productImageDao.selectByProductIdTypeMa(product.getId()).getFile_id());
+			displayinfoProduct.put("createDate", simpleDateFormat.format(product.getCreateDate()));
+			displayinfoProduct.put("modifyDate", simpleDateFormat.format(product.getModifyDate()));
+			displayinfoProduct.put("fileId", productImageDao.selectByProductIdTypeMa(product.getId()).getFileId());
 			displayinfoProducts.add(displayinfoProduct);
+			
+			productCount--;
+			if(productCount == 0)break;
 		}
-		
-		displayinfos.put("products ", displayinfoProducts);
-		return displayinfos;
+
+		apiDisplayinfos.put("products ", displayinfoProducts);
+		return apiDisplayinfos;
 	}
 }

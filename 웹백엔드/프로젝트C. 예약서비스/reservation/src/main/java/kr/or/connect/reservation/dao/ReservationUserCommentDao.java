@@ -51,9 +51,9 @@ public class ReservationUserCommentDao {
 	}
 	
 
-	public float selectAvgScoreByProductId(Integer productId) {
+	public Float selectAvgScoreByProductId(Integer productId) {
 		Map<String, Integer> params = new HashMap<String, Integer>();
 		params.put("productId", productId);
-		return jdbc.queryForObject(RESERVATION_USER_COMMENT__SELECT_AVG__SCORE, params, float.class);
+		return jdbc.queryForObject(RESERVATION_USER_COMMENT__SELECT_AVG__SCORE, params, Float.class);
 	}
 }

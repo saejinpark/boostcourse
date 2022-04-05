@@ -18,23 +18,23 @@ import static kr.or.connect.reservation.dao.CategoryDaoSqls.*;
 @Repository
 public class CategoryDao {
 	private NamedParameterJdbcTemplate jdbc;
-    private RowMapper<Category> rowMapper = BeanPropertyRowMapper.newInstance(Category.class);
+	private RowMapper<Category> rowMapper = BeanPropertyRowMapper.newInstance(Category.class);
 
-    public CategoryDao(DataSource dataSource) {
-        this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-    }
-    
-    public List<Category> selectAll() {
-        return jdbc.query(CATEGORY__SELECT_ALL, Collections.emptyMap(), rowMapper);
-    }
-    
-    public int selectCount() {
-        return jdbc.queryForObject(CATEGORY__SELECT_COUNT, Collections.emptyMap(), Integer.class);
-    }
+	public CategoryDao(DataSource dataSource) {
+		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+	}
 
-    public Category selectById(Integer id) {
-    	Map<String, Integer> params = new HashMap<>();
-    	params.put("id", id);
-        return jdbc.queryForObject(CATEGORY__SELECT_BY__ID, params, rowMapper);
-    }
+	public List<Category> selectAll() {
+		return jdbc.query(CATEGORY__SELECT_ALL, Collections.emptyMap(), rowMapper);
+	}
+
+	public int selectCountAll() {
+		return jdbc.queryForObject(CATEGORY__SELECT_COUNT_ALL, Collections.emptyMap(), Integer.class);
+	}
+
+	public Category selectById(Integer id) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("id", id);
+		return jdbc.queryForObject(CATEGORY__SELECT_BY__ID, params, rowMapper);
+	}
 }

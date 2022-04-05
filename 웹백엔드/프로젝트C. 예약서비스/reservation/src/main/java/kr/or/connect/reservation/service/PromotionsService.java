@@ -37,13 +37,13 @@ public class PromotionsService {
 		List<Map<String, Object>> Items = new ArrayList<Map<String, Object>>();
 		for(Promotion promotion : promotions) {
 			Map<String, Object> Item = new HashMap<String, Object>();
-			Product product = productDao.selectByProductId(promotion.getProduct_id());
+			Product product = productDao.selectById(promotion.getProductId());
 			Item.put("id", promotion.getId());
-			Item.put("productId", promotion.getProduct_id());
-			Item.put("categoryId", product.getCategory_id());
-			Item.put("categoryName", categoryDao.selectById(product.getCategory_id()).getName());
+			Item.put("productId", promotion.getProductId());
+			Item.put("categoryId", product.getCategoryId());
+			Item.put("categoryName", categoryDao.selectById(product.getCategoryId()).getName());
 			Item.put("description", product.getDescription());
-			Item.put("fileId", productImageDao.selectByProductIdTypeMa(product.getId()).getFile_id());
+			Item.put("fileId", productImageDao.selectByProductIdTypeMa(product.getId()).getFileId());
 			Items.add(Item);
 		}
 		ApiPromotions.put("items", Items);

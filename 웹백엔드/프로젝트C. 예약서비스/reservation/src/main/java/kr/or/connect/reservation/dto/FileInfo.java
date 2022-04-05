@@ -7,10 +7,10 @@ import lombok.Data;
 @Data
 public class FileInfo {
 	private Integer id;
-	private String file_name;
-	private String save_file_name;
-	private String content_type;
-	private Integer delete_flag;
-	private Date create_date;
-	private Date modify_date;
+	private String fileName;
+	private String saveFileName;
+	private String contentType;
+	private Integer deleteFlag;
+	private Date createDate;
+	private Date modifyDate;
 }

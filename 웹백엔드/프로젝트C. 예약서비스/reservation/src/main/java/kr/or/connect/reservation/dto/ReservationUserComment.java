@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 public class ReservationUserComment {
 	private Integer id;
-	private Integer product_id;
-	private Integer reservation_info_id;
-	private Integer user_id;
+	private Integer productId;
+	private Integer reservationInfoId;
+	private Integer userId;
 	private Float score;
 	private String comment;
-	private Date create_date;
-	private Date modify_date;
+	private Date createDate;
+	private Date modifyDate;
 }

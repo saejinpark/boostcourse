@@ -58,14 +58,14 @@ public class CommentsService {
 		for(ReservationUserComment reservationUserComment : reservationUserComments) {
 			Map<String, Object> apiReservationUserComment = new HashMap<String, Object>();
 			apiReservationUserComment.put("id", reservationUserComment.getId());
-			apiReservationUserComment.put("productId", reservationUserComment.getProduct_id());
-			apiReservationUserComment.put("reservationInfoId", reservationUserComment.getReservation_info_id());
+			apiReservationUserComment.put("productId", reservationUserComment.getProductId());
+			apiReservationUserComment.put("reservationInfoId", reservationUserComment.getReservationInfoId());
 			apiReservationUserComment.put("score", reservationUserComment.getScore());
-			User user = userDao.selectById(reservationUserComment.getUser_id());
+			User user = userDao.selectById(reservationUserComment.getUserId());
 			apiReservationUserComment.put("reservationEmail", user.getEmail());
 			apiReservationUserComment.put("comment", reservationUserComment.getComment());
-			apiReservationUserComment.put("createDate", simpleDateFormat.format(reservationUserComment.getCreate_date()));
-			apiReservationUserComment.put("modifyDate", simpleDateFormat.format(reservationUserComment.getModify_date()));
+			apiReservationUserComment.put("createDate", simpleDateFormat.format(reservationUserComment.getCreateDate()));
+			apiReservationUserComment.put("modifyDate", simpleDateFormat.format(reservationUserComment.getModifyDate()));
 			
 			List<ReservationUserCommentImage> reservationUserCommentImages = //
 					reservationUserCommentImageDao.selectByReservationUserCommentId(reservationUserComment.getId());
@@ -74,9 +74,9 @@ public class CommentsService {
 			for(ReservationUserCommentImage reservationUserCommentImage : reservationUserCommentImages) {
 				Map<String, Object> apiReservationUserCommentImage = new HashMap<String, Object>();
 				apiReservationUserCommentImage.put("id", reservationUserCommentImage.getId());
-				apiReservationUserCommentImage.put("reservationInfoId", reservationUserCommentImage.getReservation_info_id());
-				apiReservationUserCommentImage.put("reservationUserCommentId", reservationUserCommentImage.getReservation_user_comment_id());
-				apiReservationUserCommentImage.put("fileId", reservationUserCommentImage.getFile_id());
+				apiReservationUserCommentImage.put("reservationInfoId", reservationUserCommentImage.getReservationInfoId());
+				apiReservationUserCommentImage.put("reservationUserCommentId", reservationUserCommentImage.getReservationUserCommentId());
+				apiReservationUserCommentImage.put("fileId", reservationUserCommentImage.getFileId());
 				
 				apiReservationUserCommentImages.add(apiReservationUserCommentImage);
 			}
