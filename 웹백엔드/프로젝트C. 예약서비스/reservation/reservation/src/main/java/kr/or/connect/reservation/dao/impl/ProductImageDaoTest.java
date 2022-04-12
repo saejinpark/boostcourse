@@ -1,19 +1,25 @@
 package kr.or.connect.reservation.dao.impl;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dao.ProductImageDao;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {ApplicationConfig.class})
 public class ProductImageDaoTest {
-	public static void main(String[] args) {
-		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-		ProductImageDao productImageDao = ac.getBean(ProductImageDao.class);
-		
-		System.out.println(productImageDao.selectByProductId(1));
-
-	    ((AbstractApplicationContext) ac).close();
+	
+	@Autowired
+	ProductImageDao productImageDao;
+	
+	@Test
+    public void execute() throws Exception{
+		assertNotNull("selectByProductId(1) should be not null", productImageDao.selectByProductId(1));
 	}
 }

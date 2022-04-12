@@ -1,20 +1,28 @@
 package kr.or.connect.reservation.dao.impl;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
-import kr.or.connect.reservation.dao.DisplayInfoDao;
+import kr.or.connect.reservation.dao.DisplayinfoDao;
 
-public class DisplayInfoDaoTest {
-	public static void main(String[] args) {
-		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-		DisplayInfoDao displayInfoDao = ac.getBean(DisplayInfoDao.class);
-		
-		System.out.println(displayInfoDao.selectById(44));
-		
-	    ((AbstractApplicationContext) ac).close();
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {ApplicationConfig.class})
+public class DisplayinfoDaoTest {
+
+	@Autowired
+	private DisplayinfoDao displayinfoDao;
+	
+
+	@Test
+    public void execute() throws Exception{
+		assertNotNull("getDisplayinfos(1, 1) should be not null", displayinfoDao.getDisplayinfos(1, 1));
+		assertNotNull("getDisplayinfos(1, 1, 1) should be not null", displayinfoDao.getDisplayinfos(1, 1, 1));
+		assertNotNull("getDisplayinfos(1) should be not null", displayinfoDao.getDisplayinfos(1));
 	}
 }
- 

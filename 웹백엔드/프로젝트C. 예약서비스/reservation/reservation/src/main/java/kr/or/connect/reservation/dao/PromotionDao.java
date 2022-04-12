@@ -16,14 +16,18 @@ import static kr.or.connect.reservation.dao.PromotionDaoSqls.*;
 
 @Repository
 public class PromotionDao {
-	private NamedParameterJdbcTemplate jdbc;
-	private RowMapper<Promotion> rowMapper = BeanPropertyRowMapper.newInstance(Promotion.class);
+    private NamedParameterJdbcTemplate jdbc;
+    private RowMapper<Promotion> rowMapper = BeanPropertyRowMapper.newInstance(Promotion.class);
 
-	public PromotionDao(DataSource dataSource) {
-		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-	}
-	
-	public List<Promotion> selectAll() {
-		return jdbc.query(PROMOTION__SELECT_ALL, Collections.emptyMap(), rowMapper);
-	}
+    public PromotionDao(DataSource dataSource) {
+        this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+    }
+    
+    public List<Promotion> getPromotions() {
+    	return jdbc.query(SELECT_ALL, Collections.emptyMap(), rowMapper);
+    }
+    
+    public int selectCount() {
+    	return jdbc.queryForObject(SELECT_COUNT_ALL, Collections.emptyMap(), int.class);
+    }
 }

@@ -4,6 +4,10 @@ import lombok.Data;
 
 @Data
 public class Promotion {
-	private Integer id;
-	private Integer productId;
+	private int id;
+	private int productId;
+	private int categoryId;
+	private String categoryName;
+	private String description;
+	private int fileId;
 }

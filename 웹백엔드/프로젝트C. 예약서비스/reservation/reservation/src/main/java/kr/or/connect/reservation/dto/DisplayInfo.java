@@ -1,14 +1,16 @@
 package kr.or.connect.reservation.dto;
 
-import java.sql.Date;
-
 import lombok.Data;
 
 @Data
-public class DisplayInfo {
-
-	private Integer id;
-	private Integer productId;
+public class Displayinfo {
+	private int id;
+	private int categoryId;
+	private int displayInfoId;
+	private String name;
+	private String description;
+	private String content;
+	private String event;
 	private String openingHours;
 	private String placeName;
 	private String placeLot;
@@ -16,6 +18,7 @@ public class DisplayInfo {
 	private String tel;
 	private String homepage;
 	private String email;
-	private Date createDate;
-	private Date modifyDate;
+	private String createDate;
+	private String modifyDate;
+	private int fileId;
 }

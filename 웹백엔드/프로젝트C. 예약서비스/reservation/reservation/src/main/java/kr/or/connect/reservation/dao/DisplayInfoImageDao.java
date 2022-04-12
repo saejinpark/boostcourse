@@ -17,16 +17,17 @@ import static kr.or.connect.reservation.dao.DisplayInfoImageDaoSqls.*;
 
 @Repository
 public class DisplayInfoImageDao {
-	private NamedParameterJdbcTemplate jdbc;
-	private RowMapper<DisplayInfoImage> rowMapper = BeanPropertyRowMapper.newInstance(DisplayInfoImage.class);
+    private NamedParameterJdbcTemplate jdbc;
+    private RowMapper<DisplayInfoImage> rowMapper = BeanPropertyRowMapper.newInstance(DisplayInfoImage.class);
 
-	public DisplayInfoImageDao(DataSource dataSource) {
-		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-	}
+    public DisplayInfoImageDao(DataSource dataSource) {
+        this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+    }
+    
 
-	public List<DisplayInfoImage> selectByDisplayInfoId(Integer displayInfoId) {
-		Map<String, Integer> params = new HashMap<String, Integer>();
-		params.put("displayInfoId", displayInfoId);
-		return jdbc.query(DISPLAY_INFO_IMAGE__SELECT_BY__DISPLAY_INFO_ID, params, rowMapper);
+	public List<DisplayInfoImage> selectByProductId(Integer displayId) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("displayId", displayId);
+		return jdbc.query(SELECT_BY_DISPLAYID, params, rowMapper);
 	}
 }

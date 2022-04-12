@@ -4,7 +4,13 @@ import lombok.Data;
 
 @Data
 public class DisplayInfoImage {
-	private Integer id;
-	private Integer displayInfoId;
-	private Integer fileId;
+	private int id;
+	private int displayInfoId;
+	private int fileId;
+	private String fileName;
+	private String saveFileName;
+	private String contentType;
+	private int deleteFlag;
+	private String createDate;
+	private String modifyDate;
 }

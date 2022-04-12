@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dto.ProductPrice;
 
+
 import static kr.or.connect.reservation.dao.ProductPriceDaoSqls.*;
 
 @Repository
@@ -23,10 +24,11 @@ public class ProductPriceDao {
 	public ProductPriceDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
-
+	
 	public List<ProductPrice> selectByProductId(Integer productId) {
-		Map<String, Integer> params = new HashMap<String, Integer>();
+		Map<String, Integer> params = new HashMap<>();
 		params.put("productId", productId);
-		return jdbc.query(PRODUCT_PRICE__SELECT_BY__PRODUCT_ID, params, rowMapper);
+		return jdbc.query(SELECT_BY_PRODUCTID, params, rowMapper);
+		
 	}
 }

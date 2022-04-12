@@ -4,8 +4,14 @@ import lombok.Data;
 
 @Data
 public class ProductImage {
-	private Integer id;
-	private Integer productId;
+	private int productId;
+	private int productImageId;
 	private String type;
-	private Integer fileId;
+	private int fileInfoId;
+	private String fileName;
+	private String saveFileName;
+	private String contentType;
+	private int deleteFlag;
+	private String createDate;
+	private String modifyDate;
 }

@@ -23,18 +23,10 @@ public class ProductImageDao {
 	public ProductImageDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
-	
+
 	public List<ProductImage> selectByProductId(Integer productId) {
-		Map<String, Integer> params = new HashMap<String, Integer>();
+		Map<String, Integer> params = new HashMap<>();
 		params.put("productId", productId);
-		return jdbc.query(PRODUCT_IMAGE__SELECT_BY__PRODUCT_ID, params, rowMapper);
-	}
-	
-	public ProductImage selectByProductIdTypeMa(Integer productId) {
-		Map<String, Integer> params = new HashMap<String, Integer>();
-		params.put("productId", productId);
-		return jdbc.queryForObject(PRODUCT_IMAGE__SELECT_BY__PRODUCT_ID__TYPE_MA, params, rowMapper);
+		return jdbc.query(SELECT_BY_PRODUCTID, params, rowMapper);
 	}
 }
-
-

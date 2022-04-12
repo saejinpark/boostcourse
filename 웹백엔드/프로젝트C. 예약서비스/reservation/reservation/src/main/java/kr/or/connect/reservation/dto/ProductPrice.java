@@ -1,16 +1,14 @@
 package kr.or.connect.reservation.dto;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
 public class ProductPrice {
-	private Integer id;
-	private Integer productId;
+	private int id;
+	private int productId;
 	private String priceTypeName;
-	private Integer price;
-	private Float discountRate;
-	private Date createDate;
-	private Date modifyDate;
+	private int price;
+	private int discountRate;
+	private String createDate;
+	private String modifyDate;
 }

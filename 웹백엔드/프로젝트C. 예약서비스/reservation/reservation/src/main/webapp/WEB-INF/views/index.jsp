@@ -4,7 +4,8 @@
 	response.sendRedirect(
 		"http://" + 
 		request.getServerName() + ":" + 
-		request.getServerPort() + "/" + 
+		request.getServerPort() + 
+		request.getContextPath() + "/" + 
 		"swagger-ui.html"
 	);
 %>

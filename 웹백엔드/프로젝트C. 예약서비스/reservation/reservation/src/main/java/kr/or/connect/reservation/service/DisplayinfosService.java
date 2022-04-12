@@ -1,91 +1,57 @@
 package kr.or.connect.reservation.service;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.CategoryDao;
-import kr.or.connect.reservation.dao.DisplayInfoDao;
-import kr.or.connect.reservation.dao.ProductDao;
+import kr.or.connect.reservation.dao.DisplayInfoImageDao;
+import kr.or.connect.reservation.dao.DisplayinfoDao;
 import kr.or.connect.reservation.dao.ProductImageDao;
-import kr.or.connect.reservation.dto.DisplayInfo;
-import kr.or.connect.reservation.dto.Product;
+import kr.or.connect.reservation.dao.ProductPriceDao;
+import kr.or.connect.reservation.dao.ReservationUserCommentDao;
+import kr.or.connect.reservation.dto.Displayinfo;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class DisplayinfosService {
 
-	@Autowired
-	CategoryDao categoryDao;
-
-	@Autowired
-	ProductDao productDao;
-
-	@Autowired
-	DisplayInfoDao displayInfoDao;
-
-	@Autowired
-	ProductImageDao productImageDao;
-
-	String pattern = "yyyy-MM-dd HH:mm:ss.S";
-	SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+	private final CategoryDao categoryDao;
+	private final DisplayinfoDao displayinfoDao;
+	private final ProductImageDao productImageDao;
+	private final DisplayInfoImageDao displayInfoImageDao;
+	private final ReservationUserCommentDao reservationUserCommentDao;
+	private final ProductPriceDao productPriceDao;
 
 	public Map<String, Object> getDisplayinfos(Integer categoryId, Integer start) {
-		Map<String, Object> apiDisplayinfos = new HashMap<>();
-
-		int totalcount = 0;
-		Integer productCount = 4;
 
 		if (start == null)
 			start = 0;
-
-		List<DisplayInfo> displayInfos = displayInfoDao.selectAll();
-
-		if (categoryId != null && categoryId != 0) {
-			displayInfos = displayInfos.stream().filter(
-					displayInfo -> productDao.selectById(displayInfo.getProductId()).getCategoryId().equals(categoryId))
-					.collect(Collectors.toList());
+		Integer productCount = 4;
+		Map<String, Object> displayinfos = new HashMap<>();
+		displayinfos.put("productCount", productCount);
+		if (categoryId == null) {
+			displayinfos.put("totalCount", categoryDao.getCountAll());
+			displayinfos.put("products", displayinfoDao.getDisplayinfos(start, productCount));
+		} else {
+			displayinfos.put("totalCount", categoryDao.getCountById(categoryId));
+			displayinfos.put("products", displayinfoDao.getDisplayinfos(categoryId, start, productCount));
 		}
-		totalcount = displayInfos.size();
-		
-		apiDisplayinfos.put("totalCount", totalcount);
-		apiDisplayinfos.put("productCount", productCount);
-
-		List<Map<String, Object>> displayinfoProducts = new ArrayList<Map<String, Object>>();
-		
-		for(int i=start.intValue(); i<totalcount; i++) {
-			DisplayInfo displayInfo = displayInfos.get(i);
-			Map<String, Object> displayinfoProduct = new HashMap<String, Object>();
-			Product product = productDao.selectById(displayInfo.getProductId());
-			displayinfoProduct.put("id", product.getId());
-			displayinfoProduct.put("categoryId", product.getCategoryId());
-			displayinfoProduct.put("displayInfoId", displayInfo.getId());
-			displayinfoProduct.put("name", categoryDao.selectById(product.getCategoryId()).getName());
-			displayinfoProduct.put("description", product.getDescription());
-			displayinfoProduct.put("content", product.getContent());
-			displayinfoProduct.put("event", product.getEvent());
-			displayinfoProduct.put("openingHours", displayInfo.getOpeningHours());
-			displayinfoProduct.put("placeName", displayInfo.getPlaceName());
-			displayinfoProduct.put("placeLot", displayInfo.getPlaceLot());
-			displayinfoProduct.put("placeStreet", displayInfo.getPlaceStreet());
-			displayinfoProduct.put("tel", displayInfo.getTel());
-			displayinfoProduct.put("homepage", displayInfo.getHomepage());
-			displayinfoProduct.put("email", displayInfo.getEmail());
-			displayinfoProduct.put("createDate", simpleDateFormat.format(product.getCreateDate()));
-			displayinfoProduct.put("modifyDate", simpleDateFormat.format(product.getModifyDate()));
-			displayinfoProduct.put("fileId", productImageDao.selectByProductIdTypeMa(product.getId()).getFileId());
-			displayinfoProducts.add(displayinfoProduct);
-			
-			productCount--;
-			if(productCount == 0)break;
-		}
-
-		apiDisplayinfos.put("products ", displayinfoProducts);
-		return apiDisplayinfos;
+		return displayinfos;
 	}
+
+	public Map<String, Object> getDisplayinfosById(Integer displayId) {
+		Map<String, Object> displayinfos = new HashMap<>();
+		Displayinfo product = displayinfoDao.getDisplayinfos(displayId);
+		displayinfos.put("product", product);
+		displayinfos.put("productImages", productImageDao.selectByProductId(product.getId()));
+		displayinfos.put("displayInfoImages", displayInfoImageDao.selectByProductId(displayId));
+		displayinfos.put("avgScore", reservationUserCommentDao.selectAvgScoreByProductId(product.getId()));
+		displayinfos.put("productPrices", productPriceDao.selectByProductId(product.getId()));
+
+		return displayinfos;
+	}
+
 }

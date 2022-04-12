@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class ReservationUserCommentImage {
-	private Integer id;
-	private Integer reservationInfoId;
-	private Integer reservationUserCommentId;
-	private Integer fileId;
+	private int id;
+	private int reservationInfoId;
+	private int reservationUserCommentId;
+	private int fileId;
 }
