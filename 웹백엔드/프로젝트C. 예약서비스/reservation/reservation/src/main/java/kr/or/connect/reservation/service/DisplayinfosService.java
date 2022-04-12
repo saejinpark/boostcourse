@@ -29,7 +29,7 @@ public class DisplayinfosService {
 
 		if (start == null)
 			start = 0;
-		Integer productCount = 4;
+		final Integer productCount = 4;
 		Map<String, Object> displayinfos = new HashMap<>();
 		displayinfos.put("productCount", productCount);
 		if (categoryId == null) {

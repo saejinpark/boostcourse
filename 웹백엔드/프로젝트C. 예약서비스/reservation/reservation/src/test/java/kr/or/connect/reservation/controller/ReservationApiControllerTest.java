@@ -21,18 +21,30 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.config.WebMvcContextConfiguration;
 import kr.or.connect.reservation.service.CategoriesService;
+import kr.or.connect.reservation.service.CommentsService;
+import kr.or.connect.reservation.service.DisplayinfosService;
+import kr.or.connect.reservation.service.PromotionsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebMvcContextConfiguration.class, ApplicationConfig.class })
 public class ReservationApiControllerTest {
-
+	
 	@InjectMocks
     private ReservationApiController reservationApiController;
 
 	@Mock
 	private CategoriesService categoriesService;
-
+	
+	@Mock
+	private CommentsService commentsService;
+	
+	@Mock
+	private DisplayinfosService displayinfosService;
+	
+	@Mock
+	private PromotionsService PromotionsService;
+	
     private MockMvc mockMvc;
     
     @Before

@@ -16,7 +16,7 @@ public class CommentsService {
 
 	public Map<String, Object> getComments(Integer productId, Integer start) {
 		Map<String, Object> comments = new HashMap<>();
-		Integer commentCount = 5;
+		final Integer commentCount = 5;
 		comments.put("commentCount", commentCount);
 		if (start == null)
 			start = 0;
