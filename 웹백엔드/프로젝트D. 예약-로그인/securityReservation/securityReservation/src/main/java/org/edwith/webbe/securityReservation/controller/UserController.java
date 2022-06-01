@@ -36,7 +36,7 @@ public class UserController {
         return "redirect:/user/welcome";
     }
     
-    @RequestMapping("/loginerror")
+    @PostMapping("/loginerror")
 	@ApiOperation(value = "로그인 실패", notes = "로그인 실패 페이지")
     public String loginerror(@RequestParam("login_error")String loginError){
         return "user/loginerror";
