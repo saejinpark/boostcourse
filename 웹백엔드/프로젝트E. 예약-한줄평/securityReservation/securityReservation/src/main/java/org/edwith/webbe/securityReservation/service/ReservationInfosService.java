@@ -26,18 +26,22 @@ public class ReservationInfosService {
 	private final ReservationInfoPriceDao reservationInfoPriceDao;
 	
 	public HashMap<String, Object> getReservationInfos(Integer userId) {
+		
 		HashMap<String, Object> ReservationInfos = new HashMap<>();
 		List<ReservationInfo> items = reservationInfosDao.selectByUserId(userId);
 		ReservationInfos.put("size", items.size());
 		ReservationInfos.put("items", items);
+		
 		return ReservationInfos;
 	}
 	@Transactional
 	public RegisteredReservationInfo reservation(
-			HashMap<String, Object> registerReservationInfo) throws ParseException{
-
+			HashMap<String, Object> registerReservationInfo) throws ParseException
+		{
+		
         SimpleDateFormat sDate = new SimpleDateFormat("yyyy.MM.dd");
         Date now = new Date();
+        
         Integer reservationInfoId = reservationInfosDao.insertReservationInfo(
 			(Integer) registerReservationInfo.get("productId"), 
 			(Integer) registerReservationInfo.get("displayInfoId"),
@@ -46,6 +50,7 @@ public class ReservationInfosService {
 			now,
 			now
 		);
+        
         @SuppressWarnings("unchecked")
 		List<HashMap<String, Object>> prices = (List<HashMap<String, Object>>) registerReservationInfo.get("prices");
         
@@ -56,6 +61,7 @@ public class ReservationInfosService {
 					(Integer) price.get("count")
     			);
         }
+        
         SimpleDateFormat fDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         
         ReservationInfo tempReservationInfo = reservationInfosDao.selectById(reservationInfoId);

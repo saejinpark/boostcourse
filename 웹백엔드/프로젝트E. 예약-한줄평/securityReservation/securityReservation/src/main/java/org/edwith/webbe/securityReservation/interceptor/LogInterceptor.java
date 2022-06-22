@@ -13,15 +13,13 @@ public class LogInterceptor implements HandlerInterceptor{
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-//		System.out.println(handler.toString() + " 가 종료되었습니다.  " + modelAndView.getViewName() + "을 view로 사용합니다.");
-		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
+		ModelAndView modelAndView) throws Exception {
+		logger.debug("{} 가종료되었습니다.", handler.toString());
 	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-//		System.out.println(handler.toString() + " 를 호출했습니다.");
 		logger.debug("{} 를 호출했습니다.", handler.toString());
 		return true;
 	}

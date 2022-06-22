@@ -3,6 +3,7 @@ package org.edwith.webbe.securityReservation.config;
 import java.util.List;
 
 import org.edwith.webbe.securityReservation.argumentresolver.HeaderMapArgumentResolver;
+import org.edwith.webbe.securityReservation.interceptor.LogInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -69,6 +70,17 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
     		System.out.println("아규먼트 리졸버 등록..");
 		argumentResolvers.add(new HeaderMapArgumentResolver());
+	}
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+    	registry.addInterceptor(new LogInterceptor())
+    		.addPathPatterns("/**")
+    		.excludePathPatterns(
+    				"/swagger-resources/**",
+    				"/swagger-ui/**",
+    				"/v2/api-docs"
+				);
 	}
 	
     @Bean

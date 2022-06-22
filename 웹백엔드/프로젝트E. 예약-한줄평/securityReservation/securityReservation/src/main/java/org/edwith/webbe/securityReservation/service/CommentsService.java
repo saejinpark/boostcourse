@@ -22,6 +22,7 @@ public class CommentsService {
 	private final ReservationUserCommentImageDao reservationUserCommentImageDao;
 
 	public Map<String, Object> getComments(Integer productId, Integer start) {
+		
 		Map<String, Object> comments = new HashMap<>();
 		final Integer commentCount = 5;
 		comments.put("commentCount", commentCount);
@@ -35,12 +36,12 @@ public class CommentsService {
 			comments.put("reservationUserComments",
 					reservationUserCommentDao.getComments(productId, start, commentCount));
 		}
+		
 		return comments;
 	}
 	@Transactional
 	public void postComments(int reservationInfoId, int score, Long userId, String comment, String fileName) {
-		
-        try{
+		try{
         	int pos = fileName.lastIndexOf( "." );
     		String ext = fileName.substring( pos + 1 );
     		Integer fileInfoId = 
@@ -66,7 +67,19 @@ public class CommentsService {
 					fileInfoId
 				);
         }catch(Exception ex){
-            throw new RuntimeException("file Save Error");
+            throw new RuntimeException("postcomment Error");
         }
+	}
+	@Transactional
+	public void postComments(int reservationInfoId, int score, Long userId, String comment){
+		
+		ReservationInfo reservationInfo = reservationInfosDao.selectById(reservationInfoId);
+		reservationUserCommentDao.insertReservationUserComment(
+			reservationInfo.getProductId(), 
+			reservationInfoId, 
+			score,
+			userId,  
+			comment
+		);
 	}
 }

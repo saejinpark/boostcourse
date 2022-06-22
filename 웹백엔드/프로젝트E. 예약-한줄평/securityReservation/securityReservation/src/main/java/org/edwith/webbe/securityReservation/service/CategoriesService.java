@@ -16,10 +16,13 @@ public class CategoriesService {
 	private final CategoryDao categoryDao;
 
 	public Map<String, Object> getCategories() {
+		
 		Map<String, Object> categories = new HashMap<>();
 		List<Category> items = categoryDao.getCategories();
+		
 		categories.put("size", items.size());
 		categories.put("items", items);
+		
 		return categories;
 	}
 }

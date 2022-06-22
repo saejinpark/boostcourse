@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserEntity getUser(String loginUserId) {
+    	
         User user = userDao.getUserByEmail(loginUserId);
         return new UserEntity(user.getEmail(), user.getPassword());
     }
@@ -30,6 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public List<UserRoleEntity> getUserRoles(String loginUserId) {
+    	
         List<UserRole> userRoles = userRoleDao.getRolesByEmail(loginUserId);
         List<UserRoleEntity> list = new ArrayList<>();
 
@@ -42,6 +44,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional(readOnly = false)
 	public void addUser(User user, boolean admin) {
+		
 		userDao.addUser(user);
 		
 		User selectedMember = userDao.getUserByEmail(user.getEmail());

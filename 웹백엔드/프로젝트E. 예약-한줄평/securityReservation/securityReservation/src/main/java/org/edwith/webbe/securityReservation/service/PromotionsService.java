@@ -19,6 +19,7 @@ public class PromotionsService {
 		Map<String, Object> promotions = new HashMap<String, Object>();
 		promotions.put("size", promotionDao.selectCount());
 		promotions.put("items", promotionDao.getPromotions());
+		
 		return promotions;
 	}
 }

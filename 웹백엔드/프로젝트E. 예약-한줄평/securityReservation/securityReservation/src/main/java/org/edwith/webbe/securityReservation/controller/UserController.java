@@ -31,8 +31,10 @@ public class UserController {
 
     @PostMapping("/join")
     public String join(@ModelAttribute User user){
+    	
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.addUser(user, false);
+        
         return "redirect:/user/welcome";
     }
     
@@ -49,6 +51,7 @@ public class UserController {
 
     @GetMapping("/memberinfo")
     public String memberInfo(Principal principal, ModelMap modelMap){
+    	
         String userId = principal.getName();
         User user = userService.getUserByEmail(userId);
         modelMap.addAttribute("user", user);
