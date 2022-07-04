@@ -8,8 +8,31 @@
     </head>
     <body>
         <script>
-            function solution(pattern) {
-                let answer = [];
+            function solution(data, error) {
+                let answer = [
+                    "111111101000001111111",
+                    "100000101000001000001",
+                    "101110100000001011101",
+                    "101110100000001011101",
+                    "101110101000001011101",
+                    "100000101000001000001",
+                    "111111101010101111111",
+                    "000000001000000000000",
+                    "111001101000011110011",
+                    "000000000000000000000",
+                    "000000100000000000000",
+                    "000000000000000000000",
+                    "000000100000000000000",
+                    "000000001000000000000",
+                    "111111100000000000000",
+                    "100000101000000000000",
+                    "101110100000000000000",
+                    "101110100000000000000",
+                    "101110101000000000000",
+                    "100000101000000000000",
+                    "111111101000000000000",
+                ];
+                answer = answer.map((v) => v.split(""));
                 const code = {
                     00: "0", 01: "1", 02: "2", 03: "3", 04: "4",
                     05: "5", 06: "6", 07: "7", 08: "8", 09: "9",
@@ -21,16 +44,18 @@
                     35: "Z", 36: " ", 37: "!", 38: "'", 39: ",",
                     40: ".", 41: "/", 42: ":", 43: ";", 44: "?"
                 };
-                const intCode = new Map();
                 const charCode = new Map();
                 for (let i of Object.keys(code)) {
-                    intCode.set(parseInt(i), code[i]);
                     charCode.set(code[i], parseInt(i));
                 }
-                pattern = pattern.map((v) => v.split(""));
-                let translateData = "";
-                for (let i = 1; i <= 17; i++) {
-                    let oneOfData = "";
+                data = data.toUpperCase();
+                for (let i = 1; i <= data.length; i++) {
+                    let encodingChar = charCode
+                        .get(data[i - 1])
+                        .toString(2)
+                        .padStart(8, "0");
+                    // encodingChar = "12345678"; //순서확인
+                    // encodingChar = "||||||<>"; //방향 확인
                     let positions = [];
                     switch (i) {
                         case 1:
@@ -40,8 +65,9 @@
                                 [12, 20], [12, 19],
                                 [11, 20], [11, 19]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 2:
@@ -51,8 +77,9 @@
                                 [9, 18], [9, 17],
                                 [10, 18], [10, 17]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 3:
@@ -62,8 +89,9 @@
                                 [13, 18], [13, 17],
                                 [14, 18], [14, 17]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 4:
@@ -73,8 +101,9 @@
                                 [17, 18], [17, 17],
                                 [18, 18], [18, 17]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 5:
@@ -84,8 +113,9 @@
                                 [20, 16], [20, 15],
                                 [19, 16], [19, 15]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 6:
@@ -95,8 +125,9 @@
                                 [16, 16], [16, 15],
                                 [15, 16], [15, 15]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 7:
@@ -106,8 +137,9 @@
                                 [12, 16], [12, 15],
                                 [11, 16], [11, 15]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 8:
@@ -117,8 +149,9 @@
                                 [9, 14], [9, 13],
                                 [10, 14], [10, 13]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 9:
@@ -128,8 +161,9 @@
                                 [13, 14], [13, 13],
                                 [14, 14], [14, 13]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 10:
@@ -139,8 +173,9 @@
                                 [17, 14], [17, 13],
                                 [18, 14], [18, 13]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 11:
@@ -150,8 +185,9 @@
                                 [20, 12], [20, 11],
                                 [19, 12], [19, 11]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 12:
@@ -161,8 +197,9 @@
                                 [16, 12], [16, 11],
                                 [15, 12], [15, 11]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 13:
@@ -172,8 +209,9 @@
                                 [12, 12], [12, 11],
                                 [11, 12], [11, 11]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 14:
@@ -183,8 +221,9 @@
                                 [8, 12], [8, 11],
                                 [7, 12], [7, 11]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 15:
@@ -194,8 +233,9 @@
                                 [3, 12], [3, 11],
                                 [2, 12], [2, 11]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 16:
@@ -205,8 +245,9 @@
                                 [0, 10], [0, 9],
                                 [1, 10], [1, 9]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         case 17:
@@ -216,20 +257,26 @@
                                 [4, 10], [4, 9],
                                 [5, 10], [5, 9]
                             ];
-                            for (let position of positions) {
-                                oneOfData += pattern[position[0]][position[1]];
+                            for (let j = 0; j < encodingChar.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    encodingChar[j];
                             }
                             break;
                         default:
                             break;
                     }
-                    oneOfData = intCode.get(parseInt(oneOfData, 2));
-                    if (oneOfData !== "0") translateData += oneOfData;
                 }
-                answer.push(translateData);
-                let translateError = "0x";
-                for (let i = 1; i <= 7; i++) {
-                    let oneOfError = "";
+                let errorArr = error.match(/[0-9A-F]{2}/g);
+                for (let i = 1; i <= errorArr.length; i++) {
+                    let errorCode = "";
+                    errorCode += parseInt(errorArr[i - 1][0], 16)
+                        .toString(2)
+                        .padStart(4, 0);
+                    errorCode += parseInt(errorArr[i - 1][1], 16)
+                        .toString(2)
+                        .padStart(4, 0);
+                    // errorCode = "12345678"; // 순서 확인
+                    // encodingChar = "||||||<>"; //방향 확인
                     let positions = [];
                     switch (i) {
                         case 1:
@@ -239,8 +286,9 @@
                                 [11, 10], [11, 9],
                                 [12, 10], [12, 9]
                             ]
-                            for (let position of positions) {
-                                oneOfError += pattern[position[0]][position[1]];
+                            for (let j = 0; j < positions.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    errorCode[j];
                             }
                             break;
                         case 2:
@@ -250,8 +298,9 @@
                                 [15, 10], [15, 9],
                                 [16, 10], [16, 9]
                             ]
-                            for (let position of positions) {
-                                oneOfError += pattern[position[0]][position[1]];
+                            for (let j = 0; j < positions.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    errorCode[j];
                             }
                             break;
                         case 3:
@@ -261,8 +310,9 @@
                                 [19, 10], [19, 9],
                                 [20, 10], [20, 9]
                             ]
-                            for (let position of positions) {
-                                oneOfError += pattern[position[0]][position[1]];
+                            for (let j = 0; j < positions.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    errorCode[j];
                             }
                             break;
                         case 4:
@@ -272,8 +322,9 @@
                                 [10, 8], [10, 7],
                                 [9, 8], [9, 7]
                             ]
-                            for (let position of positions) {
-                                oneOfError += pattern[position[0]][position[1]];
+                            for (let j = 0; j < positions.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    errorCode[j];
                             }
                             break;
                         case 5:
@@ -283,8 +334,9 @@
                                 [11, 5], [11, 4],
                                 [12, 5], [12, 4]
                             ]
-                            for (let position of positions) {
-                                oneOfError += pattern[position[0]][position[1]];
+                            for (let j = 0; j < positions.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    errorCode[j];
                             }
                             break;
                         case 6:
@@ -294,8 +346,9 @@
                                 [10, 3], [10, 2],
                                 [9, 3], [9, 2]
                             ]
-                            for (let position of positions) {
-                                oneOfError += pattern[position[0]][position[1]];
+                            for (let j = 0; j < positions.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    errorCode[j];
                             }
                             break;
                         case 7:
@@ -305,46 +358,21 @@
                                 [11, 1], [11, 0],
                                 [12, 1], [12, 0]
                             ]
-                            for (let position of positions) {
-                                oneOfError += pattern[position[0]][position[1]];
+                            for (let j = 0; j < positions.length; j++) {
+                                answer[positions[j][0]][positions[j][1]] =
+                                    errorCode[j];
                             }
                             break;
                         default:
                             break;
                     }
-                    let temp = "";
-                    temp += intCode.get(parseInt(oneOfError.slice(0, 4), 2));
-                    temp += intCode.get(parseInt(oneOfError.slice(4, 8), 2));
-                    oneOfError = temp;
-                    translateError += oneOfError;
                 }
-                answer.push(translateError);
+                answer = answer.map((v) => v.join("") + "\n");
+                answer = answer.join("");
+                // answer = answer.replace(/0/g, "⬜").replace(/1/g, "⬛");//보기 편하게 하기
                 return answer;
             }
-            let helloWorld = [
-                "111111101000001111111",
-                "100000101000001000001",
-                "101110100001001011101",
-                "101110100001001011101",
-                "101110101000101011101",
-                "100000101000001000001",
-                "111111101010101111111",
-                "000000001001000000000",
-                "111001101001011110011",
-                "001111010010101101100",
-                "001101111010000000100",
-                "001111010011000000010",
-                "001101111011010001000",
-                "000000001010101011010",
-                "111111100110011001000",
-                "100000101010000000000",
-                "101110100111010101000",
-                "101110100110110011000",
-                "101110101000010001000",
-                "100000101111000000000",
-                "111111101001100011000",
-            ];
-            console.log(solution(helloWorld));
+            console.log(solution("hello world !!!", "0xAABBCCDDEEFF"));
         </script>
     </body>
 </html>
