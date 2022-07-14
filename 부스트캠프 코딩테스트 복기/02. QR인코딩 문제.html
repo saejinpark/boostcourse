@@ -55,7 +55,7 @@
                         .toString(2)
                         .padStart(8, "0");
                     // encodingChar = "12345678"; //순서확인
-                    // encodingChar = "||||||<>"; //방향 확인
+                    // encodingChar = "||||||><"; //방향 확인
                     let positions = [];
                     switch (i) {
                         case 1:
@@ -267,6 +267,7 @@
                     }
                 }
                 let errorArr = error.match(/[0-9A-F]{2}/g);
+
                 for (let i = 1; i <= errorArr.length; i++) {
                     let errorCode = "";
                     errorCode += parseInt(errorArr[i - 1][0], 16)
@@ -276,7 +277,7 @@
                         .toString(2)
                         .padStart(4, 0);
                     // errorCode = "12345678"; // 순서 확인
-                    // encodingChar = "||||||<>"; //방향 확인
+                    // encodingChar = "||||||><"; //방향 확인
                     let positions = [];
                     switch (i) {
                         case 1:
@@ -369,7 +370,7 @@
                 }
                 answer = answer.map((v) => v.join("") + "\n");
                 answer = answer.join("");
-                // answer = answer.replace(/0/g, "⬜").replace(/1/g, "⬛");//보기 편하게 하기
+                answer = answer.replace(/0/g, "⬜").replace(/1/g, "⬛");//보기 편하게 하기
                 return answer;
             }
             console.log(solution("hello world !!!", "0xAABBCCDDEEFF"));
