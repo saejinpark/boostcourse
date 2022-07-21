@@ -1,0 +1,24 @@
+{
+  "name": "day03",
+  "version": "1.0.0",
+  "description": "나만의 체크포인트\r ================",
+  "type": "commonjs",
+  "main": "crawler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/f84f42fb791fd850ccb55e585eb2b850.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/f84f42fb791fd850ccb55e585eb2b850"
+  },
+  "homepage": "https://gist.github.com/f84f42fb791fd850ccb55e585eb2b850",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
