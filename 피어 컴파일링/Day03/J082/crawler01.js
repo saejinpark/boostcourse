@@ -1,5 +1,6 @@
-const SerpApi = require("google-search-results-nodejs");
-const search = new SerpApi.GoogleSearch(
+import { GoogleSearch } from "google-search-results-nodejs";
+
+const search = new GoogleSearch(
     "97892a5c76d4da2183690d5a1e0589f4f012c3b9ab6957c6325e7e26d1b7d817"
 );
 
@@ -36,13 +37,13 @@ const searchWaitClose = () => {
         setTimeout(() => {
             resolve();
             rl.close();
-        }, 3000);
+        }, 5000);
     });
 };
 
-const readline = require("readline");
+import { createInterface } from "readline";
 
-const rl = readline.createInterface({
+const rl = createInterface({
     input: process.stdin,
     output: process.stdout,
 });

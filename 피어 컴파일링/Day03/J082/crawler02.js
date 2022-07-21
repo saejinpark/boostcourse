@@ -104,7 +104,6 @@ const keywordCacheCheck = async (keywordCache) => {
         try {
             let keyword = keywordCache;
             let searchCount = keywordCacheDataLimit;
-
             if (!/^\w+$/.test(keyword)) {
                 let [_, tempKeyword, tempSearchCount] =
                     keyword.match(/(\w+)(\(\d+\))/);
