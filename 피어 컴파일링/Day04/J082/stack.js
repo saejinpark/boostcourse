@@ -19,16 +19,21 @@ export class Stack {
         return this.memory.getLength();
     }
 
-    return(name) {
-        while (this.memory.getByIndexValue(this.memory.getLength() - 1) === name) {
-            this.memory.pop();
+    return(baseLine, name) {
+        const unCollectHeapArr = [];
+        while (this.memory.getLength() !== baseLine) {
+            const testCase = this.memory.pop().getValue();
+            if(testCase !== name){
+                unCollectHeapArr.push(testCase);
+            }
         }
+        return unCollectHeapArr;
     }
 
     getIndexName(index) {
         return this.memory.getByIndexKey(index);
     }
-    
+
     getMemoryToStringArr() {
         return this.memory.getNodeToStringArr();
     }

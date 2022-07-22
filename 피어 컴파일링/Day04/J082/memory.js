@@ -25,7 +25,7 @@ export class Memory {
 
     setSize(type, length) {
         console.log(
-            "setSize--------------------------------------------------------------------"
+            "setSize------------------------------------------------------------------------------------"
         );
         if (this.typeMap.has(type)) {
             console.log("이미 등록된 타입입니다.");
@@ -38,15 +38,18 @@ export class Memory {
 
     malloc(type, count) {
         console.log(
-            "malloc--------------------------------------------------------------------"
+            "malloc------------------------------------------------------------------------------------"
         );
+        console.log();
+        console.log(`type : ${type}, count : ${count}`);
+        console.log();
         let data = "#".repeat(this.typeMap.get(type));
-        if (data.length < 8) data = data.padStart(8, " ");
+        if (data.length < 8) data = data.padStart(8, "-");
         for (let i = 0; i < count; i++) {
             const stackPointerArr = [];
             const dataPartArr = data.match(/..../g);
             dataPartArr.forEach((dataPart) => {
-                const collectHeapPointer = this.heap.add(dataPart);
+                const collectHeapPointer = this.heap.add(` ${dataPart} `);
                 stackPointerArr.push(this.stack.add(collectHeapPointer));
                 this.collectHeapMap.set(collectHeapPointer, true);
             });
@@ -57,34 +60,36 @@ export class Memory {
             };
             this.heapStatusArr.push(stackStatus);
         }
-
-        this.show();
     }
 
     free(pointer) {
         console.log(
-            "free---------------------------------------------------------------------"
+            "free-------------------------------------------------------------------------------------"
         );
         return this.heap.clear(this.stack.clear(pointer));
     }
 
     call(name, paramCount) {
         console.log(
-            "call---------------------------------------------------------------------"
+            "call-------------------------------------------------------------------------------------"
         );
+        const baseLine = this.stack.getLength();
         for (let i = 0; i < paramCount; i++) {
             this.stack.add(name);
         }
-        this.callArr.unshift([name, paramCount]);
+        this.callArr.unshift({ baseLine, name, paramCount });
     }
 
     returnFrom(name) {
         console.log(
-            "returnFrom----------------------------------------------------------------"
+            "returnFrom--------------------------------------------------------------------------------"
         );
-        if (this.callArr[0][0] === name) {
-            this.callArr.shift();
-            this.stack.return(name);
+        if (this.callArr[0]["name"] === name) {
+            const baseLine = this.callArr.shift()["baseLine"];
+            const unCollectHeapArr = this.stack.return(baseLine, name);
+            unCollectHeapArr.forEach((unCollectHeap) => {
+                this.collectHeapMap.delete(unCollectHeap);
+            });
         } else {
             console.log("최근에 호출된 name이 아닙니다.");
         }
@@ -92,7 +97,7 @@ export class Memory {
 
     usege() {
         console.log(
-            "usege--------------------------------------------------------------------"
+            "usege------------------------------------------------------------------------------------"
         );
         const stackMemory = this.stackSize;
         const usingStackMemory = this.stack.getLength();
@@ -101,42 +106,39 @@ export class Memory {
         const usingHeapMemory = this.heap.getLength();
         const remainHeapMemory = heapMemory - usingHeapMemory;
 
-        console.log("-".repeat(50));
         console.log(
             `
-    스택 영역 전체크기 : ${stackMemory},
+       스택 영역 전체크기 : ${stackMemory},
             사용중인 용량 : ${usingStackMemory}, 
                 남은 용량 : ${remainStackMemory},
-    ---------------------------------------------------------------
-        힙 영역 전체크기 : ${heapMemory}, 
+---------------------------------------------------------------
+         힙 영역 전체크기 : ${heapMemory}, 
             사용중인 용량 : ${remainHeapMemory},
                 남은 용량 : ${remainHeapMemory}
 `
         );
-
-        console.log("-".repeat(50));
     }
 
     callstack() {
         console.log(
-            "callstack------------------------------------------------------------------"
+            "callstack----------------------------------------------------------------------------------"
         );
         let nameIndex = this.stack.getLength() - 1;
         const calls = [];
         this.callArr.forEach((element) => {
-            const [name, paramCount] = element;
+            const { name, paramCount } = element;
             for (let i = 0; i < paramCount; i++) {
                 if (i === 0) {
                     calls.push(
-                        `[  ${name}() ${this.stack.getIndexName(nameIndex)}    `
+                        `[${name}() ${this.stack.getIndexName(nameIndex)}  `
                     );
                 } else if (i === paramCount - 1) {
                     calls.push(
-                        `   ${name}() ${this.stack.getIndexName(nameIndex)}   ]`
+                        ` ${name}() ${this.stack.getIndexName(nameIndex)} ]`
                     );
                 } else {
                     calls.push(
-                        `   ${name}() ${this.stack.getIndexName(nameIndex)} -> `
+                        ` ${name}() ${this.stack.getIndexName(nameIndex)}->`
                     );
                 }
                 nameIndex--;
@@ -147,9 +149,8 @@ export class Memory {
 
     heapdump() {
         console.log(
-            "heapdump------------------------------------------------------------------"
+            "heapdump----------------------------------------------------------------------------------"
         );
-        console.log("-".repeat(50));
         this.heapStatusArr.forEach((heapStatus) => {
             console.log(
                 `
@@ -159,20 +160,21 @@ export class Memory {
     : ${heapStatus.stackPointerArr.join(", ")}
     `
             );
+
+            console.log("=================================================");
         });
-        console.log("-".repeat(50));
     }
 
     garbageCollect() {
         console.log(
-            "garbageCollect------------------------------------------------------------"
+            "garbageCollect----------------------------------------------------------------------------"
         );
         this.heap.garbageCheck(this.collectHeapMap);
     }
 
     reset() {
         console.log(
-            "reset---------------------------------------------------------------------"
+            "reset-------------------------------------------------------------------------------------"
         );
         const stackSize = this.stackSize;
         const heapSize = this.heapSize;
@@ -192,9 +194,29 @@ export class Memory {
 
     show() {
         console.log(
-            this.stack
-                .getMemoryToStringArr()
-                .concat(this.heap.getMemoryToStringArr())
+            "show--------------------------------------------------------------------------------------"
         );
+        console.log();
+        console.log();
+        console.log(
+            "=========================================[stack]=========================================="
+        );
+        let temp = "";
+        this.stack
+            .getMemoryToStringArr()
+            .concat(this.heap.getMemoryToStringArr())
+            .forEach((element, index) => {
+                temp += element;
+                if ((index + 1) % 5 === 0) {
+                    console.log(temp);
+                    temp = "";
+                }
+            });
+
+        console.log(
+            "=========================================[heap ]=========================================="
+        );
+        console.log();
+        console.log();
     }
 }

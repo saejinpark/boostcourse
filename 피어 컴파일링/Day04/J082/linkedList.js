@@ -131,18 +131,6 @@ export class LinkedList {
         }
     }
 
-    print() {
-        this.nodeKeyArr.forEach((element, index) => {
-            const node = this.nodeMap.get(element);
-            console.log(
-                `index : ${("" + index).padStart(
-                    3,
-                    " "
-                )}, key: ${element}, value : ${node.getValue()}`
-            );
-        });
-    }
-
     spliceByKey(key) {
         const splicedNode = this.getByKey(key);
         const prev = splicedNode.getPrevNode();
@@ -173,10 +161,10 @@ export class LinkedList {
         this.tempKeyArr.forEach((key) => {
             if (this.nodeMap.has(key)) {
                 nodeToStringArr.push(
-                    `[${key}](${this.nodeMap
+                    `[${key}]( ${this.nodeMap
                         .get(key)
                         .getValue()
-                        .padStart(8, " ")})`
+                        .padEnd(6, " ")} )`
                 );
             } else {
                 nodeToStringArr.push(`[${key}](        )`);

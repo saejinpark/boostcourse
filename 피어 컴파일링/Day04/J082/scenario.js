@@ -2,7 +2,7 @@ import { Memory } from "./memory.js"
 
 const memory = new Memory();
 
-memory.init(50, 50)
+memory.init(100, 100)
 memory.show();
 
 const types = new Map([
@@ -22,21 +22,38 @@ types.forEach((length, type) => {
 
 console.log(memory);
 memory.show();
-memory.malloc("int", 4);
+memory.malloc("byte", 2);
+memory.show();
+memory.malloc("short", 2);
+memory.show();
+memory.malloc("int", 2);
+memory.show();
+memory.malloc("long", 2);
+memory.show();
+memory.malloc("float", 2);
+memory.show();
+memory.malloc("double", 2);
+memory.show();
+memory.malloc("char", 2);
+memory.show();
+memory.malloc("boolean", 2);
 memory.show();
 memory.free("0x0000");
 memory.show();
-memory.call("var", 10);
+memory.call("foo", 5);
+memory.malloc("int", 4);
+memory.malloc("int", 4);
 memory.show();
-memory.returnFrom("var");
+memory.returnFrom("foo");
 memory.show();
 memory.usege();
-memory.show();
-memory.call("var", 6);
+memory.call("foo", 5);
+memory.call("bar", 5);
 memory.show();
 memory.callstack();
 memory.show();
 memory.heapdump();
+memory.show();
 memory.garbageCollect();
 memory.show();
 memory.reset();
