@@ -46,7 +46,7 @@ memory.show();
 memory.returnFrom("foo");
 memory.show();
 // memory.show();
-// memory.usege();
+// memory.usage();
 // memory.call("foo", 5);
 // memory.call("bar", 5);
 // memory.show();
