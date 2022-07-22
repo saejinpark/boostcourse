@@ -37,5 +37,4 @@ export class Heap {
     getMemoryToStringArr() {
         return this.memory.getNodeToStringArr().reverse();
     }
-    
 }

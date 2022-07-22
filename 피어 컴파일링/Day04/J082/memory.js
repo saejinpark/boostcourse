@@ -15,6 +15,11 @@ export class Memory {
     }
 
     init(stackSize, heapSize) {
+        console.log(
+            "init--------------------------------------------------------------------------------------"
+        );
+        console.log();
+        console.log(`stackSize : ${stackSize}, heapSize : ${heapSize}`);
         this.stackSize = stackSize;
         this.heapSize = heapSize;
         this.memoryLength = stackSize + heapSize;
@@ -66,6 +71,8 @@ export class Memory {
         console.log(
             "free-------------------------------------------------------------------------------------"
         );
+        console.log();
+        console.log(`pointer : ${pointer}`);
         return this.heap.clear(this.stack.clear(pointer));
     }
 
@@ -77,7 +84,7 @@ export class Memory {
         for (let i = 0; i < paramCount; i++) {
             this.stack.add(name);
         }
-        this.callArr.unshift({baseLine, name, paramCount });
+        this.callArr.unshift({ baseLine, name, paramCount });
     }
 
     returnFrom(name) {
@@ -97,7 +104,7 @@ export class Memory {
 
     usage() {
         console.log(
-            "usege------------------------------------------------------------------------------------"
+            "usage------------------------------------------------------------------------------------"
         );
         const stackMemory = this.stackSize;
         const usingStackMemory = this.stack.getLength();
@@ -128,13 +135,13 @@ export class Memory {
         this.callArr.forEach((element) => {
             const { name, paramCount } = element;
             for (let i = 0; i < paramCount; i++) {
-                if (i === 0) {
-                    calls.push(
-                        `[${name}() ${this.stack.getIndexName(nameIndex)}  `
-                    );
-                } else if (i === paramCount - 1) {
+                if (i === paramCount - 1) {
                     calls.push(
                         ` ${name}() ${this.stack.getIndexName(nameIndex)} ]`
+                    );
+                } else if (i === 0) {
+                    calls.push(
+                        `[${name}() ${this.stack.getIndexName(nameIndex)}->`
                     );
                 } else {
                     calls.push(
@@ -144,7 +151,7 @@ export class Memory {
                 nameIndex--;
             }
         });
-        console.log(calls.join(", "));
+        console.log(calls.join(" "));
     }
 
     heapdump() {
