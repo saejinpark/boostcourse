@@ -77,7 +77,7 @@ export class Memory {
         for (let i = 0; i < paramCount; i++) {
             this.stack.add(name);
         }
-        this.callArr.unshift({ baseLine, name, paramCount });
+        this.callArr.unshift({baseLine, name, paramCount });
     }
 
     returnFrom(name) {
@@ -113,7 +113,7 @@ export class Memory {
                 남은 용량 : ${remainStackMemory},
 ---------------------------------------------------------------
          힙 영역 전체크기 : ${heapMemory}, 
-            사용중인 용량 : ${remainHeapMemory},
+            사용중인 용량 : ${usingHeapMemory},
                 남은 용량 : ${remainHeapMemory}
 `
         );
