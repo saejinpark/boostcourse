@@ -4,6 +4,7 @@ export class LinkedNode {
         this.prev = null;
         this.next = null;
     }
+
     getValue() {
         return this.val;
     }

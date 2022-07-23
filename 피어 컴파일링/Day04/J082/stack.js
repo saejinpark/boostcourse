@@ -23,7 +23,7 @@ export class Stack {
         const unCollectHeapArr = [];
         while (this.memory.getLength() !== baseLine) {
             const testCase = this.memory.pop().getValue();
-            if(testCase !== name){
+            if (testCase !== name) {
                 unCollectHeapArr.push(testCase);
             }
         }

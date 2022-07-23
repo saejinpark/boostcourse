@@ -28,6 +28,7 @@ export class Heap {
             const testCase = this.memory.getByIndexKey(start);
             if (!collectHeapMap.has(testCase)) {
                 this.memory.spliceByKey(testCase);
+                start--;
             }
             start++;
             end = this.memory.length - 1;

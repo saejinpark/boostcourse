@@ -7,7 +7,9 @@ export class LinkedList {
         this.length = 0;
         this.keyArr = [];
         for (let i = 0; i < size; i++) {
-            this.keyArr.push("0x" + start.toString(16).padStart(4, "0"));
+            this.keyArr.push(
+                "0x" + start.toString(16).padStart(8, "00").toUpperCase()
+            );
             start += unit;
         }
         this.tempKeyArr = this.keyArr.slice();
@@ -23,7 +25,6 @@ export class LinkedList {
         try {
             return this.nodeKeyArr[index];
         } catch {
-            console.log("유효하지 못한 인덱스 값입니다.");
             return null;
         }
     }
@@ -32,7 +33,6 @@ export class LinkedList {
         try {
             return this.nodeMap.get(this.nodeKeyArr[index]).getValue();
         } catch {
-            console.log("유효하지 못한 인덱스 값입니다.");
             return null;
         }
     }
@@ -41,7 +41,6 @@ export class LinkedList {
         try {
             return this.nodeMap.get(this.nodeKeyArr[index]);
         } catch {
-            console.log("유효하지 못한 인덱스 값입니다.");
             return null;
         }
     }
@@ -50,7 +49,6 @@ export class LinkedList {
         try {
             return this.nodeMap.get(key);
         } catch {
-            console.log("유효하지 못한 키 값입니다.");
             return null;
         }
     }
@@ -76,7 +74,7 @@ export class LinkedList {
             this.length++;
             return pushKey;
         } else {
-            console.log("메모리초과 입니다.");
+            return null;
         }
     }
 
@@ -97,7 +95,7 @@ export class LinkedList {
             this.length++;
             return unshiftKey;
         } else {
-            console.log("메모리초과 입니다.");
+            return null;
         }
     }
 
@@ -112,7 +110,7 @@ export class LinkedList {
             this.length--;
             return node;
         } else {
-            console.log("메모리가 비었습니다.");
+            return null;
         }
     }
 
@@ -127,7 +125,7 @@ export class LinkedList {
             this.length--;
             return node;
         } else {
-            console.log("메모리가 비었습니다.");
+            return null;
         }
     }
 
@@ -158,18 +156,21 @@ export class LinkedList {
 
     getNodeToStringArr() {
         const nodeToStringArr = [];
-        this.tempKeyArr.forEach((key) => {
-            if (this.nodeMap.has(key)) {
-                nodeToStringArr.push(
-                    `[${key}]( ${this.nodeMap
-                        .get(key)
-                        .getValue()
-                        .padEnd(6, " ")} )`
-                );
-            } else {
-                nodeToStringArr.push(`[${key}](        )`);
-            }
-        });
+        if (this.tempKeyArr.length !== 0) {
+            this.tempKeyArr.forEach((key) => {
+                if (this.nodeMap.has(key)) {
+                    nodeToStringArr.push(
+                        `[${key}](${this.nodeMap
+                            .get(key)
+                            .getValue()
+                            .padStart(7, " ")
+                            .padEnd(10, " ")})`
+                    );
+                } else {
+                    nodeToStringArr.push(`[${key}](          )`);
+                }
+            });
+        }
         return nodeToStringArr;
     }
 }
