@@ -1,7 +1,6 @@
 import random
 
 ROCK_SCISSORS_PARER = ["바위", "가위", "보"]
-ROCK_SCISSORS_PARER_INDEX = [0, 1, 2]
 RESULT = ["비겼습니다!", "나 승리!", "컴퓨터 승리!"]
 ROCK_SCISSORS_PARER_DICT = {
     "바위": {
@@ -29,16 +28,16 @@ def rcp(my):
     print(RESULT[ROCK_SCISSORS_PARER_DICT[my][computer]])
 
 
-def translate_rock_scissors_paper(my):
+def rock_scissors_paper_check(my):
     if my.isdigit():
         my = int(my)
-        if my in ROCK_SCISSORS_PARER_INDEX:
+        if my in [0, 1, 2]:
             my = ROCK_SCISSORS_PARER[my]
-    while my not in ROCK_SCISSORS_PARER and my not in ROCK_SCISSORS_PARER_INDEX:
-        my = translate_rock_scissors_paper(input("다시 입력하세요 : "))
+    while my not in ROCK_SCISSORS_PARER:
+        my = rock_scissors_paper_check(input("다시 입력하세요 : "))
     return my
 
 
-my = translate_rock_scissors_paper(input("가위 바위 보 : "))
+my = rock_scissors_paper_check(input("가위 바위 보 : "))
 
 rcp(my)
