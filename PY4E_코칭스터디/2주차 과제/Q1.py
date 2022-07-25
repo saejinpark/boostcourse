@@ -21,6 +21,14 @@ ROCK_SCISSORS_PARER_DICT = {
     }
 }
 
+
+def rcp(my):
+    computer = ROCK_SCISSORS_PARER[random.randint(0, 2)]
+    print(f"나: {my}")
+    print(f"컴퓨터: {computer}")
+    print(RESULT[ROCK_SCISSORS_PARER_DICT[my][computer]])
+
+
 def translate_rock_scissors_paper(my):
     if my.isdigit():
         my = int(my)
@@ -31,14 +39,6 @@ def translate_rock_scissors_paper(my):
     return my
 
 
-def rcp(my):
-    computer = ROCK_SCISSORS_PARER[random.randint(0, 2)]
-    print(f"나: {my}")
-    print(f"컴퓨터: {computer}")
-    print(RESULT[ROCK_SCISSORS_PARER_DICT[my][computer]])
-
-
 my = translate_rock_scissors_paper(input("가위 바위 보 : "))
-
 
 rcp(my)
