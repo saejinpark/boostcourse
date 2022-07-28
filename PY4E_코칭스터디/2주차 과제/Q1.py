@@ -1,6 +1,6 @@
 import random
 
-ROCK_SCISSORS_PARER = ["바위", "가위", "보"]
+ROCK_SCISSORS_PARER = ["가위", "바위", "보"]
 RESULT = ["비겼습니다!", "나 승리!", "컴퓨터 승리!"]
 ROCK_SCISSORS_PARER_DICT = {
     "바위": {
