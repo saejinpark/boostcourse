@@ -38,9 +38,11 @@ class Process {
           let worker = new Worker("./worker.js", {
             workerData: { capacity: this.capacity },
           });
+          
           worker.on("message", (value) => {
             resolve(value);
           });
+
         })
       );
     }

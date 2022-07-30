@@ -1,5 +1,0 @@
-{
-    "jobSize": 1000000000,
-    "numThreads": 16,
-    "useThread": true
-}
