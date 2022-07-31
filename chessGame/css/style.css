@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+.inner {
+    margin: auto;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blind {
+    overflow: hidden;
+    position: absolute;
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.move {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    font-size: 34px;
+    transition: 0.5s;
+    background-color: transparent;
+    border: 0;
+    z-index: 2;
+}
+
+.pointer_event_none {
+    pointer-events: none;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: no-repeat url(../image/loading.gif) center;
+    backdrop-filter: blur(10px);
+    mix-blend-mode: color-burn;
+}

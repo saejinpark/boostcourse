@@ -88,6 +88,7 @@ export class FakeProcess {
             for (let [name, thread] of this.getThreadMap().entries()) {
                 thread.postMessage(`--> (${name}) thread 작업시작`);
                 while (!this.checkRespon()) {
+                    console.log(!this.checkRespon())
                     await new Promise((resolve) => {
                         setTimeout(() => {
                             resolve();

@@ -1,0 +1,11 @@
+.header {
+    text-align: center;
+    height: 15vh;
+    background-color: #40739e;
+}
+
+.header > .inner > h1 {
+    color: #f5f6fa;
+    font-weight: 700;
+    font-size: 52px;
+}
