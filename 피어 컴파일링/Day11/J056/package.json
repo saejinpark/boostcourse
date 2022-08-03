@@ -1,0 +1,26 @@
+{
+  "name": "day11",
+  "version": "1.0.0",
+  "description": "Path Parser",
+  "type": "module",
+  "main": "Path.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/f147912482c22738b1ef3a405795cc8a.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/f147912482c22738b1ef3a405795cc8a"
+  },
+  "homepage": "https://gist.github.com/f147912482c22738b1ef3a405795cc8a",
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "jest": "^28.1.3"
+  }
+}

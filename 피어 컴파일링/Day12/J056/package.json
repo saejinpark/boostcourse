@@ -1,0 +1,21 @@
+{
+  "name": "day12",
+  "version": "1.0.0",
+  "description": "- [ ] 입력받은 값으로",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/375afcd35ec677690ac70694782e6f4c.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/375afcd35ec677690ac70694782e6f4c"
+  },
+  "homepage": "https://gist.github.com/375afcd35ec677690ac70694782e6f4c"
+}
