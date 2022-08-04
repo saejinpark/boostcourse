@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "uuid4": "^2.0.2"
+  },
+  "name": "day13",
+  "type": "commonjs",
+  "description": "",
+  "version": "1.0.0",
+  "main": "Base64.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/4aa8f4ea438b9588e0612946a973a294.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/4aa8f4ea438b9588e0612946a973a294"
+  },
+  "homepage": "https://gist.github.com/4aa8f4ea438b9588e0612946a973a294"
+}
