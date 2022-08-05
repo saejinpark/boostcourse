@@ -1,0 +1,31 @@
+{
+  "name": "day14",
+  "version": "1.0.0",
+  "description": "nodejs http 헤더 시각화",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/650605a20baf687fef4634aaae434106.git"
+  },
+  "keywords": [],
+  "author": "naamukim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/650605a20baf687fef4634aaae434106"
+  },
+  "homepage": "https://gist.github.com/650605a20baf687fef4634aaae434106",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.2.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "jest": "^28.1.3"
+  }
+}

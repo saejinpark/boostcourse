@@ -1,0 +1,25 @@
+{
+  "name": "day14",
+  "version": "1.0.0",
+  "description": "- [x] URL 입력받기\r - [ ] http로 요청/응답 받기\r - [ ] HTTP또는 DOM Parser로 HTML 분석\r - [ ] script와 img 태그의 src 찾아 다시 요청 보내기\r - [ ] 각 요청마다 스킴, 경로, 종류, 용량, 응답 대기 시간, 다운로드 시간 출력\r - [ ] 모든 다운로드가 끝난 후 도메인 개수, 요청 개수, 이미지 개수, 코드 개수, 전송 용량, 리다이렉트 개수, 전체 로딩 시간 출력\r - [ ] 가장 용량이 컸던 요청의 url과 사이즈 출력\r - [ ] 가장 오래 응답 대기한 요청의 url과 시간 출력\r - [ ] 가장 오래 다운로드한 요청의 url과 시간 출력\r - [ ] 메모리 캐싱 구현\r - [ ] 캐싱 전과 후 비교",
+  "main": "HTTP.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/00fe75564dbc5e2216846cb25e75870a.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/00fe75564dbc5e2216846cb25e75870a"
+  },
+  "homepage": "https://gist.github.com/00fe75564dbc5e2216846cb25e75870a",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "node-cache": "^5.1.2"
+  },
+  "type": "module"
+}

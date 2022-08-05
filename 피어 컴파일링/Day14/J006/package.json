@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "dependencies": {
+    "jsdom": "^20.0.0",
+    "readline-sync": "^1.4.10"
+  },
+  "name": "j006",
+  "description": "- [x] http,https 모듈을 활용해서 요청을 보내고 응답을 받기. - 완료\r - [x] html함수를 밖으로 빼는서 정리 - 완료\r - [x] dom parser 모듈을 통해 html parsing. - 완료\r - [x] 이때 script태그의 src속성, img태그의 src속성에 있는 주소도 받기 - 완료\r - [x] 가져온 링크를 요청을 보내고 응답시간 체크 - 완료\r - [x] 링크 내 정보 , 파일, 등으로 도메인 스킴 경로 종류 용량 대기시간 다운시간 구성 - 완료\r - [x] 메모리 캐싱 FIFO로 동작하도록 구현\r - [x] 캐시된 메모리들은 로딩에 포함되지 않도록 구현\r - [x] http가 들어올때도 https로 들어올 수 있게 리다이렉트\r - [x] www.nexon.com -> www.nexon.com/HOME/GAME 처럼 path도 리다이렉트 받을 수 있게 구현\r - [x] 최종 출력구현",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
