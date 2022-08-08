@@ -9,19 +9,21 @@ guest_book = {
     "정무": "010-3333-3333"
 }
 
-FIND_WORD_REG = re.compile("\d{3}-\d{4}-\d{4}")
 
-for name in guest_book:
-    if not os.path.exists("./guest_book"):
-        os.makedirs("./guest_book")
-
+def wrong_guest_book(name, number):
+    CHECK_EXACT_NUMBER = re.compile("010-\d{4}-\d{4}")
     print("-"*30)
     print("이름:", name)
     print("번호:", guest_book[name])
-
-    if FIND_WORD_REG.match(guest_book[name]):
+    if CHECK_EXACT_NUMBER.match(guest_book[name]):
+        if not os.path.exists("./guest_book"):
+            os.makedirs("./guest_book")
         file = open(f"./guest_book/{name}.txt", "w")
+        file.write(number)
         print("저장합니다.")
-        file.write(guest_book[name])
     else:
         print("해당 번호는 올바르지 않습니다.")
+
+
+for name in guest_book:
+    wrong_guest_book(name, guest_book[name])

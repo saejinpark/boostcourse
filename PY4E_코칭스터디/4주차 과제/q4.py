@@ -1,22 +1,46 @@
-import re
+def check_id(id):
+    if len(id) != 14:
+        print("잘못된 번호입니다.")
+        print("올바른 번호를 넣어주세요")
+        return
+    before, after = id.split("-")
+    if len(before) != 6:
+        print("잘못된 번호입니다.")
+        print("올바른 번호를 넣어주세요")
+        return
+    if len(after) != 7:
+        print("잘못된 번호입니다.")
+        print("올바른 번호를 넣어주세요")
+        return
+    
+    birth_year = id[:2]
+    birth_month = id[2:4]
+    if 0 <= int(birth_year) <= 21:
+        birth_year_check = input("2000년 이후 출생자 입니까? 맞으면 o 아니면 x :")
+        if birth_year_check == "x":
+            print("잘못된 번호입니다.")
+            print("올바른 번호를 넣어주세요")
+        elif after[0] not in ["3", "4"]:
+            print("잘못된 번호입니다.")
+            print("올바른 번호를 넣어주세요")
+        elif after[0] == "3":
+            print(f"{birth_year}년{birth_month}월 남자")
+        elif after[0] == "4":
+            print(f"{birth_year}년{birth_month}월 여자")
+    else:
+        if after[0] not in ["1", "2"]:
+            print("잘못된 번호입니다.")
+            print("올바른 번호를 넣어주세요")
+        elif after[0] == "1":
+            print(f"{birth_year}년{birth_month}월 남자")
+        elif after[0] == "2":
+            print(f"{birth_year}년{birth_month}월 여자")
+    
+# a = "500629-2222222"
+# check_id(a)
 
-RESIDENT_REGISTRATION_NUMBER = [
+# a = "000629-2222222"
+# check_id(a)
 
-    "500629-2222222",
-    "000629-2222222",
-    "000629-2222222",
-    "000629-1222222"
-]
-
-RESIDENT_REGISTRATION_NUMBER_CHECK = re.compile("\d{6}-\d{7}")
-
-for number in RESIDENT_REGISTRATION_NUMBER:
-    if RESIDENT_REGISTRATION_NUMBER_CHECK.match(number):
-        birth_yy_mm_dd, security_number = number.split("-")
-        birth_yy = birth_yy_mm_dd[0:3]
-        birth_mm = birth_yy_mm_dd[3:5]
-        birth_dd = birth_yy_mm_dd[5:7]
-        print(birth_yy_mm_dd, security_number)
-
-        print(f"생년월일: {birth_yy}년, {birth_mm}월, {birth_dd}일")
-        print(f"성별: {'남자' if security_number[0] in ['1', '3'] else '여자'}")
+a = "000629-1222222"
+check_id(a)
