@@ -1,0 +1,20 @@
+{
+  "name": "eventmanager",
+  "version": "1.0.0",
+  "description": "- [ ] 이벤트 기반 동작을 도와주는 이벤트 매니저   - [ ] sharedInstance()   - [ ] add()     - eventName \"\" 빈값 가능.   - [ ] remove()   - [ ] postEvent()   - [ ] stringify()   - [ ] workerthread - [ ] 비동기 지원   - [ ] postEvent()   - [ ] addSubscriber()",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/4caff3ab27c0b193837298027883047f.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/4caff3ab27c0b193837298027883047f"
+  },
+  "homepage": "https://gist.github.com/4caff3ab27c0b193837298027883047f",
+  "type": "module"
+}
