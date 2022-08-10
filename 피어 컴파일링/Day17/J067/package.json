@@ -1,0 +1,27 @@
+{
+  "name": "day_17",
+  "version": "1.0.0",
+  "description": "1. [] POS 모듈 2. [] 대기큐 모듈 3. [] 매니저 모듈 4. [] 1단계 요리사 모듈 5. [] 현황판 모듈",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/19614f673000b9c9142bb236300bdd7a.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/19614f673000b9c9142bb236300bdd7a"
+  },
+  "homepage": "https://gist.github.com/19614f673000b9c9142bb236300bdd7a",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "events": "^3.3.0",
+    "nodemon": "^2.0.19",
+    "prompt-async": "^0.9.9",
+    "readline-sync": "^1.4.10"
+  }
+}
