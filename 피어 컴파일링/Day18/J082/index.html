@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./reset.css" />
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./aside.css" />
+        <link rel="stylesheet" href="./main.css" />
+        <script src="https://kit.fontawesome.com/bfafa52380.js" crossorigin="anonymous" defer></script>
+        <title>Day 18 데이터베이스</title>
+    </head>
+    <body>
+        <input type="radio" name="sql-tab-trigger" id="ddl-trigger" checked />
+        <input type="radio" name="sql-tab-trigger" id="dml-trigger" />
+        <input type="radio" name="sql-tab-trigger" id="dcl-trigger" />
+        <input type="radio" name="sql-tab-trigger" id="tcl-trigger" />
+        <aside class="aside">
+            <nav class="aside__nav">
+                <ul class="aside__ul">
+                    <li class="aside__li">
+                        <label class="label" for="ddl-trigger">ddl</label>
+                    </li>
+                    <li class="aside__li">
+                        <label class="label" for="dml-trigger">dml</label>
+                    </li>
+                    <li class="aside__li">
+                        <label class="label" for="dcl-trigger">dcl</label>
+                    </li>
+                    <li class="aside__li">
+                        <label class="label" for="tcl-trigger">tcl</label>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main">
+            <section class="tab" id="ddl">
+                <h2 class="blind">ddl</h2>
+                <article class="sql-output">
+                    <h3 class="detail">output</h3>
+                    <table>
+                        <caption class="blind">
+                            schema
+                        </caption>
+                        <thead></thead>
+                        <tbody></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </article>
+                <form class="sql-input">
+                    <select name="start-verb" id="ddl-select" required>
+                        <option value="">구문종류</option>
+                        <option value="create">CREATE</option>
+                        <option value="alter">ALTER</option>
+                        <option value="drop">DROP</option>
+                        <option value="truncate">TRUNCATE</option>
+                    </select>
+                    <input type="text" class="query-contents" />
+                    <button>🔺</button>
+                </form>
+            </section>
+            <section class="tab" id="dml">
+                <h2 class="blind">dml</h2>
+                <article class="sql-output">
+                    <h3 class="detail">output</h3>
+                    <table>
+                        <caption class="blind">
+                            schema
+                        </caption>
+                        <thead></thead>
+                        <tbody></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </article>
+                <form class="sql-input">
+                    <select name="start-verb" id="dml-select" required>
+                        <option value="">구문종류</option>
+                        <option value="select">SELECT</option>
+                        <option value="insert">INSERT</option>
+                        <option value="update">UPDATE</option>
+                        <option value="delete">DELETE</option>
+                    </select>
+                    <input type="text" class="query-contents" />
+                    <button>🔺</button>
+                </form>
+            </section>
+            <section class="tab" id="dcl">
+                <h2 class="blind">dcl</h2>
+                <article class="sql-output">
+                    <h3 class="detail">output</h3>
+                    <table>
+                        <caption class="blind">
+                            schema
+                        </caption>
+                        <thead></thead>
+                        <tbody></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </article>
+                <form class="sql-input">
+                    <select name="start-verb" id="dcl-select" required>
+                        <option value="">구문종류</option>
+                        <option value="grant">GRANT</option>
+                        <option value="revoke">REVOKE</option>
+                    </select>
+                    <input type="text" class="query-contents" />
+                    <button>🔺</button>
+                </form>
+            </section>
+            <section class="tab" id="tcl">
+                <h2 class="blind">tcl</h2>
+                <article class="sql-output">
+                    <h3 class="detail">output</h3>
+                    <table>
+                        <caption class="blind">
+                            schema
+                        </caption>
+                        <thead></thead>
+                        <tbody></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </article>
+                <form class="sql-input">
+                    <select name="start-verb" id="tcl-select" required>
+                        <option value="">구문종류</option>
+                        <option value="commit">COMMIT</option>
+                        <option value="rollback">ROLLBACK</option>
+                    </select>
+                    <input type="text" class="query-contents" />
+                    <button>🔺</button>
+                </form>
+            </section>
+        </main>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+
+            const tabs = document.querySelectorAll(".tab");
+            const formHandler = (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const select = form.querySelector("select");
+                const startVerb = select.value;
+                const input = form.querySelector(".query-contents");
+                const queryContents = input.value;
+                socket.emit(startVerb, queryContents);
+                const option = select.querySelector("option");
+                // option.selected = true;
+                // input.value = "";
+            };
+
+            tabs.forEach((tab) => {
+                const form = tab.querySelector("form");
+                form.addEventListener("submit", formHandler);
+            });
+
+            socket.on("create", (data) => {
+                const section = document.querySelector("#ddl");
+                const article = section.querySelector(".sql-output");
+                const table = article.querySelector("table");
+                const thead = article.querySelector("thead");
+                const tbody = article.querySelector("tbody");
+                const tfoot = article.querySelector("tfoot");
+                thead.innerHTML = "";
+                tbody.innerHTML = "";
+                tfoot.innerHTML = "";
+                if (data !== false) {
+                    const tr = document.createElement("tr");
+                    const cols = data["cols"];
+                    cols.forEach((col) => {
+                        const th = document.createElement("th");
+                        th.innerText = col;
+                        tr.appendChild(th);
+                    });
+                    thead.appendChild(tr);
+                }
+            });
+            socket.on("insert", (data) => {
+                const section = document.querySelector("#dml");
+                const article = section.querySelector(".sql-output");
+                const table = article.querySelector("table");
+                const thead = article.querySelector("thead");
+                const tbody = article.querySelector("tbody");
+                const tfoot = article.querySelector("tfoot");
+                thead.innerHTML = "";
+                tbody.innerHTML = "";
+                tfoot.innerHTML = "";
+                if (data !== false) {
+                    const tr = document.createElement("tr");
+                    const cols = data["cols"];
+                    cols.forEach((col) => {
+                        const th = document.createElement("th");
+                        th.innerText = col;
+                        tr.appendChild(th);
+                    });
+                    thead.appendChild(tr);
+
+                    const contents = data["contents"];
+                    contents.forEach((content) => {
+                        const tr = document.createElement("tr");
+                        Object.values(content).forEach((value) => {
+                            const td = document.createElement("td");
+                            td.innerText = value;
+                            tr.appendChild(td);
+                        });
+                        tbody.appendChild(tr);
+                    });
+                }
+            });
+            socket.on("delete", (data) => {
+                const section = document.querySelector("#dml");
+                const article = section.querySelector(".sql-output");
+                const table = article.querySelector("table");
+                const thead = article.querySelector("thead");
+                const tbody = article.querySelector("tbody");
+                const tfoot = article.querySelector("tfoot");
+                thead.innerHTML = "";
+                tbody.innerHTML = "";
+                tfoot.innerHTML = "";
+                if (data !== false) {
+                    const tr = document.createElement("tr");
+                    const cols = data["cols"];
+                    cols.forEach((col) => {
+                        const th = document.createElement("th");
+                        th.innerText = col;
+                        tr.appendChild(th);
+                    });
+                    thead.appendChild(tr);
+
+                    const contents = data["contents"];
+                    contents.forEach((content) => {
+                        const tr = document.createElement("tr");
+                        Object.values(content).forEach((value) => {
+                            const td = document.createElement("td");
+                            td.innerText = value;
+                            tr.appendChild(td);
+                        });
+                        tbody.appendChild(tr);
+                    });
+                }
+            });
+            socket.on("update", (data) => {
+                const section = document.querySelector("#dml");
+                const article = section.querySelector(".sql-output");
+                const table = article.querySelector("table");
+                const thead = article.querySelector("thead");
+                const tbody = article.querySelector("tbody");
+                const tfoot = article.querySelector("tfoot");
+                thead.innerHTML = "";
+                tbody.innerHTML = "";
+                tfoot.innerHTML = "";
+                if (data !== false) {
+                    const tr = document.createElement("tr");
+                    const cols = data["cols"];
+                    cols.forEach((col) => {
+                        const th = document.createElement("th");
+                        th.innerText = col;
+                        tr.appendChild(th);
+                    });
+                    thead.appendChild(tr);
+
+                    const contents = data["contents"];
+                    contents.forEach((content) => {
+                        const tr = document.createElement("tr");
+                        Object.values(content).forEach((value) => {
+                            const td = document.createElement("td");
+                            td.innerText = value;
+                            tr.appendChild(td);
+                        });
+                        tbody.appendChild(tr);
+                    });
+                }
+            });
+            socket.on("select", (data) => {
+                const section = document.querySelector("#dml");
+                const article = section.querySelector(".sql-output");
+                const table = article.querySelector("table");
+                const thead = article.querySelector("thead");
+                const tbody = article.querySelector("tbody");
+                const tfoot = article.querySelector("tfoot");
+                thead.innerHTML = "";
+                tbody.innerHTML = "";
+                tfoot.innerHTML = "";
+                if (data !== false) {
+                    const tr = document.createElement("tr");
+                    const cols = data["cols"];
+                    cols.forEach((col) => {
+                        const th = document.createElement("th");
+                        th.innerText = col;
+                        tr.appendChild(th);
+                    });
+                    thead.appendChild(tr);
+
+                    const contents = data["contents"];
+                    contents.forEach((content) => {
+                        const tr = document.createElement("tr");
+                        Object.values(content).forEach((value) => {
+                            const td = document.createElement("td");
+                            td.innerText = value;
+                            tr.appendChild(td);
+                        });
+                        tbody.appendChild(tr);
+                    });
+                }
+            });
+
+            socket.on("drop", (data) => {
+                const section = document.querySelector("#ddl");
+                const article = section.querySelector(".sql-output");
+                const table = article.querySelector("table");
+                const thead = article.querySelector("thead");
+                const tbody = article.querySelector("tbody");
+                const tfoot = article.querySelector("tfoot");
+                thead.innerHTML = "";
+                tbody.innerHTML = "";
+                tfoot.innerHTML = "";
+                if (data !== false) {
+                    const tr = document.createElement("tr");
+                    const cols = data["cols"];
+                    cols.forEach((col) => {
+                        const th = document.createElement("th");
+                        th.innerText = col;
+                        tr.appendChild(th);
+                    });
+                    thead.appendChild(tr);
+                    if ("contents" in data) {
+                        const contents = data["contents"];
+                        contents.forEach((content) => {
+                            const tr = document.createElement("tr");
+                            Object.values(content).forEach((value) => {
+                                const td = document.createElement("td");
+                                td.innerText = value;
+                                tr.appendChild(td);
+                            });
+                            tbody.appendChild(tr);
+                        });
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

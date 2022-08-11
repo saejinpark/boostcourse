@@ -1,0 +1,24 @@
+{
+  "name": "day18",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "-  [x] html 디자인 완료\r -  \r # 학습메모\r > 부스트코스 웹백엔드 https://www.boostcourse.org/web326/joinLectures/28304?isDesc=false\r ![image](https://user-images.githubusercontent.com/54755633/183873293-ddc16480-d33b-4f07-bf99-eb60ab9f1577.png)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/69a0c60226b3a1ae2266b57c1c500d3f.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/69a0c60226b3a1ae2266b57c1c500d3f"
+  },
+  "homepage": "https://gist.github.com/69a0c60226b3a1ae2266b57c1c500d3f",
+  "dependencies": {
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
+  }
+}
