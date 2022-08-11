@@ -1,0 +1,21 @@
+{
+  "name": "bc_day18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "input.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/b796dd8df0aa57bef833fd71d30a9dc0.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/b796dd8df0aa57bef833fd71d30a9dc0"
+  },
+  "homepage": "https://gist.github.com/b796dd8df0aa57bef833fd71d30a9dc0"
+}

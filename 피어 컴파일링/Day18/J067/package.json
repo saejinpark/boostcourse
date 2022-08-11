@@ -1,0 +1,23 @@
+{
+  "name": "day_18",
+  "version": "1.0.0",
+  "description": "1. [] CREATE TABLE    1. [] CSV 파일 생성/저장 2. [] INSERT INTO 3. [] DELETE FROM 4. [] UPDATE 5. [] SELECT FROM 6. [] DROP TABLE 7. [] REPORT TABLE 8. [] EXPORT 9. [] IMPORT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/2cd2bbbd4a16ba1a9604a2da45e0ff07.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/2cd2bbbd4a16ba1a9604a2da45e0ff07"
+  },
+  "homepage": "https://gist.github.com/2cd2bbbd4a16ba1a9604a2da45e0ff07",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "readline-sync": "^1.4.10"
+  }
+}
