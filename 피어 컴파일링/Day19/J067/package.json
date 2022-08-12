@@ -1,0 +1,23 @@
+{
+  "name": "day_19",
+  "version": "1.0.0",
+  "description": "1. [x] 서버 바인딩 2. [x] client정보 콘솔 출력 3. [] checkin 4. [] checkout 5. [] mission 6. [] peersession 7. [] complete 8. [] message 9. [] direct",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/4e081fecf03a433ae3bf56e4e1f65310.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/4e081fecf03a433ae3bf56e4e1f65310"
+  },
+  "homepage": "https://gist.github.com/4e081fecf03a433ae3bf56e4e1f65310",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
