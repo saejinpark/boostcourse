@@ -1,5 +1,6 @@
 from random import randint
 
+
 def bs31():
     print("🍧"*31)
     print("배스킨 라빈스 써리원 게임")
@@ -22,10 +23,10 @@ def bs31():
             print("현재숫자 :", base_line)
 
             if base_line == 31:
-                return False
+                return True
 
             base_line += 1
-            
+
             computer = randint(1, 3)
 
             for i in range(computer):
@@ -34,22 +35,21 @@ def bs31():
                 base_line += 1
 
                 if base_line > 31:
-                    return True
+                    return False
 
             if base_line <= 31:
-                _bs31(base_line)
+                return _bs31(base_line)
 
         except:
-            
+
             print("잘못된 입력입니다. 다시 입력해주세요.!")
-            
-            _bs31(base_line)
+
+            return _bs31(base_line)
 
     if _bs31():
-        print("\n내 승리!")
-        
-    else:
         print("\n컴퓨터 승리!")
+    else:
+        print("\n내 승리!")
 
 
 bs31()

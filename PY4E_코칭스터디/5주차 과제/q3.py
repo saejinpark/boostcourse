@@ -2,17 +2,17 @@ from random import randint
 
 MIN_MID_MAX = ["최소값", "중간값", "최댓값"]
 
+
 def guess_numbers():
     answer = []
     nums = []
-    
+
     while len(nums) < 3:
         num = randint(1, 100)
         if num not in nums:
             nums.append(num)
 
     nums.sort()
-    print(nums)
 
     num_dict = {}
     for i in range(1, 101):
@@ -26,14 +26,15 @@ def guess_numbers():
             test_case = int(input("\n숫자를 입력해주세요. :"))
             if not num_dict[test_case]:
                 print("이미 예즉에 사용한 숫자 입니다.")
+                cnt -= 1
                 continue
             num_dict[test_case] = False
             if test_case in nums:
                 idx = nums.index(test_case)
                 print(f"숫자를 맞추셨습니다! {test_case}는 {MIN_MID_MAX[idx]}입니다.")
-                cnt -= 1
                 answer.append(test_case)
             else:
+                print(f"\n{test_case}는 없습니다.")
                 if cnt > 5:
                     idx = -1
                     up = True
@@ -52,12 +53,15 @@ def guess_numbers():
                         up = nums[2] > test_case
 
                     print(
-                        f"{MIN_MID_MAX[idx]}은 {test_case} 보다 {'큽니다.' if up else '작습니다.'}")
+                        f"{MIN_MID_MAX[idx]}은 {test_case} 보다 {'큽니다.' if up else '작습니다.'}"
+                    )
+
         except:
             print("잘못된 입력입니다.")
             continue
 
     print("\n게임종료")
     print(f"\n{cnt}번 시도만에 예측성공!")
+
 
 guess_numbers()
