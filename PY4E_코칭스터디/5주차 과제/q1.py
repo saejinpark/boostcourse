@@ -5,9 +5,7 @@ def bs31():
     print("배스킨 라빈스 써리원 게임")
     print("🍧"*31)
 
-    def _bs31(base_line=None):
-        if base_line == None:
-            base_line = 1
+    def _bs31(base_line=1):
 
         try:
             my = list(map(int, input("\nMy turn - 숫자를 입력하세요: ").split()))
@@ -27,6 +25,7 @@ def bs31():
                 return False
 
             base_line += 1
+            
             computer = randint(1, 3)
 
             for i in range(computer):
@@ -48,6 +47,7 @@ def bs31():
 
     if _bs31():
         print("\n내 승리!")
+        
     else:
         print("\n컴퓨터 승리!")
 
