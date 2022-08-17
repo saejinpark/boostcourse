@@ -1,4 +1,4 @@
-from random import randint
+from random import randrange
 
 MIN_MID_MAX = ["최소값", "중간값", "최댓값"]
 
@@ -8,14 +8,14 @@ def guess_numbers():
     nums = []
 
     while len(nums) < 3:
-        num = randint(1, 100)
+        num = randrange(100)
         if num not in nums:
             nums.append(num)
 
     nums.sort()
 
     num_dict = {}
-    for i in range(1, 101):
+    for i in range(101):
         num_dict[i] = True
 
     cnt = 0

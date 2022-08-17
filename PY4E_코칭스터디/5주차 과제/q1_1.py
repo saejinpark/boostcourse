@@ -24,8 +24,8 @@ def bs31():
 
                 base_line += 1
 
-                computer = randint(1, 3)
             else:
+                computer = randint(1, 3)
                 for i in range(computer):
                     print("컴퓨터 :", base_line)
                     base_line += 1
