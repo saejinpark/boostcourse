@@ -1,0 +1,20 @@
+{
+  "name": "mission13",
+  "version": "1.0.0",
+  "description": "- [X] OSI 7 계층 학습 -> 학습정리\r     - [X] Physical Layer\r     - [X] Data Link Layer\r     - [X] Network Layer\r     - [X] Transport Layer\r     - [X] Session Layer\r     - [X] Presentation Layer\r     - [X] Application Layer",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/d1e7bff04d2dfdb55f9fbdb402278c4f.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/d1e7bff04d2dfdb55f9fbdb402278c4f"
+  },
+  "homepage": "https://gist.github.com/d1e7bff04d2dfdb55f9fbdb402278c4f",
+  "type": "module",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}
