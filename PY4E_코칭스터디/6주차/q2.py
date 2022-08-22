@@ -33,7 +33,7 @@ def sales_management(member_names, member_performance_records):
         member_name_perfor_avg = member_name_perfor_avg_list[i]
         name = member_name_perfor_avg[0]
         perfor_avg = member_name_perfor_avg[1]
-        if 3 > perfor_avg:
+        if 3 >= perfor_avg:
             print("면담 대상자 " + name)
 
 
