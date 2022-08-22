@@ -4,13 +4,13 @@ chosun_kings = "태조,정종,태종,세종,문종,단종,세조,예종,성종,�
 
 
 def king(korea_kings, chosun_kings):
-    # 딕셔너리 자료형
+    # 리스트 자료형
     korea_king_list = korea_kings.split(",")
     chosun_king_list = chosun_kings.split(",")
 
     # 딕셔너리 자료형
-    korea_king_dict = {king for king in korea_king_list}
-    chosun_king_dict = {king for king in chosun_king_list}
+    korea_king_dict = {king: True for king in korea_king_list}
+    chosun_king_dict = {king: True for king in chosun_king_list}
 
     cnt = 0
 
