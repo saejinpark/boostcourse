@@ -1,0 +1,104 @@
+.header > .inner {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px auto;
+}
+.header .title {
+  font-size: 28px;
+  font-weight: 900;
+  transform: translateY(30px) rotateZ(-30deg);
+  color: #436473;
+}
+
+.header .add_todo_btn {
+  padding: 10px 25px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #1faded;
+  color: white;
+  border: 1px solid ghostwhite;
+  text-decoration: none;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.main > .inner {
+  width: 88%;
+  float: right;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.main .work {
+  float: left;
+}
+
+.main .work > h2 {
+  background-color: #345461;
+  font-size: 24px;
+  color: white;
+  padding: 20px 15px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.main .work > .work_list > .work_list__item > .work_list__inner {
+  background-color: #cee4ef;
+  padding: 20px 15px;
+}
+
+.main
+  .work
+  > .work_list
+  > .work_list__item
+  > .work_list__inner
+  > .inner__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.main .work > .work_list > .work_list__item > .work_list__inner > .inner__info {
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.main
+  .work
+  .work_list
+  > .work_list__item
+  > .work_list__inner
+  > .inner__info
+  > .inner__btn {
+  height: 28px;
+  margin-left: 10px;
+  float: right;
+  padding-bottom: 3px;
+}
+
+.main::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+@media (max-width: 1200px) {
+  .main > .inner {
+    width: 80%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .main > .inner {
+    width: 80%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

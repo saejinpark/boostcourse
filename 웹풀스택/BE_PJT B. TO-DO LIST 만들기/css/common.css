@@ -3,6 +3,12 @@ body {
   margin: 15px;
 }
 
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
 .blind {
   overflow: hidden;
   position: absolute;
@@ -10,77 +16,4 @@ body {
   width: 1px;
   height: 1px;
   margin: -1px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 40px 0;
-}
-
-.header .title {
-  font-size: 28px;
-  font-weight: 900;
-  transform: translateY(30px) rotateZ(-30deg);
-  color: #436473;
-}
-
-.header .add_todo_btn {
-  padding: 10px 25px;
-  font-size: 14px;
-  font-weight: 400;
-  background-color: #1faded;
-  color: white;
-  border: 1px solid ghostwhite;
-}
-
-.main {
-  width: 88%;
-  float: right;
-  display: grid;
-  gap: 5px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.main section {
-  float: left;
-}
-
-.main section h2 {
-  background-color: #345461;
-  font-size: 24px;
-  color: white;
-  padding: 20px 15px;
-  margin-bottom: 5px;
-  font-weight: 700;
-}
-
-.main section .work_list .work_list__item .work_list__inner {
-  background-color: #cee4ef;
-  padding: 20px 15px;
-  min-width: 400px;
-}
-
-.main section .work_list .work_list__item .work_list__inner .inner__title {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-
-.main section .work_list .work_list__item .work_list__inner .inner__info {
-  line-height: 28px;
-}
-
-
-.main section .work_list .work_list__item .work_list__inner .inner__info .inner__btn {
-  height: 28px;
-  margin-left: 10px;
-}
-
-body::after {
-  content: "";
-  display: block;
-  width: 100%;
-  clear: both;
 }

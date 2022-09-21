@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/todoForm.css" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">할일 등록</h1>
+    </header>
+    <main class="main">
+      <h2 class="blind">메인</h2>
+      <form class="add_todo" method="post" action="/todoForm">
+        <fieldset class="add_todo__fieldset">
+          <legend class="add_todo__legend">어떤일 인가요?</legend>
+          <input
+            class="add_todo__input"
+            type="text"
+            name="title"
+            maxlength="24"
+            placeholder="swift 공부하기(24까지)"
+          />
+        </fieldset>
+        <fieldset class="add_todo__fieldset">
+          <legend class="add_todo__legend">누가 할일인가요?</legend>
+          <input
+            class="add_todo__input"
+            type="text"
+            name="name"
+            placeholder="홍길동"
+          />
+        </fieldset>
+        <fieldset class="add_todo__fieldset">
+          <legend class="add_todo__legend">우선순위를 선택하세요</legend>
+          <input
+            class="add_todo__input"
+            type="radio"
+            name="priority_radio"
+            id="priority_radio_01"
+            value="1"
+          />
+          <label class="add_todo__label" for="priority_radio_01">1순위</label>
+          <input
+            class="add_todo__input"
+            type="radio"
+            name="priority_radio"
+            id="priority_radio_02"
+            value="2"
+          />
+          <label class="add_todo__label" for="priority_radio_02">2순위</label>
+          <input
+            class="add_todo__input"
+            type="radio"
+            name="priority_radio"
+            id="priority_radio_03"
+            value="3"
+          />
+          <label class="add_todo__label" for="priority_radio_03">3순위</label>
+        </fieldset>
+        <fieldset class="add_todo__fieldset">
+          <a class="add_todo__back" href="javascript:history.back();">＜ 이전</a>
+          <fieldset class="add_todo__btn_box">
+            <button class="add_todo__btn">제출</button>
+            <input class="add_todo__btn" type="reset" value="내용지우기" />
+          </fieldset>
+        </fieldset>
+      </form>
+    </main>
+  </body>
 </html>
