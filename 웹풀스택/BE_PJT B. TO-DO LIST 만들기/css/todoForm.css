@@ -13,6 +13,7 @@
 }
 
 .main > .add_todo {
+  box-sizing: border-box;
   display: inline-block;
   text-align: left;
   padding: 15px;
@@ -34,6 +35,7 @@
 }
 
 .main > .add_todo > .add_todo__fieldset > .add_todo__input[name="title"] {
+  box-sizing: border-box;
   width: 100%;
 }
 
@@ -54,9 +56,8 @@
   float: right;
 }
 
-
 .main > .add_todo > .add_todo__fieldset:nth-child(4) {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .main > .add_todo > .add_todo__fieldset > .add_todo__btn_box > .add_todo__btn {

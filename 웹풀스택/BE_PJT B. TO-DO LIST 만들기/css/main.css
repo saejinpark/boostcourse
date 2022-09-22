@@ -44,38 +44,35 @@
   font-size: 24px;
   color: white;
   padding: 20px 15px;
-  margin-bottom: 5px;
   font-weight: 700;
 }
 
-.main .work > .work_list > .work_list__item > .work_list__inner {
+.main .work > .work_list {
+  overflow: auto;
+  max-height: 68vh;
+}
+
+.main .work > .work_list > .work_list__item {
+  margin-top: 5px;
+}
+
+.main .work > .work_list > .work_list__item > .card {
   background-color: #cee4ef;
   padding: 20px 15px;
 }
 
-.main
-  .work
-  > .work_list
-  > .work_list__item
-  > .work_list__inner
-  > .inner__title {
+.main .work > .work_list > .work_list__item > .card > .card__title {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.main .work > .work_list > .work_list__item > .work_list__inner > .inner__info {
+.main .work > .work_list > .work_list__item > .card > .card__info {
   line-height: 28px;
   font-size: 14px;
 }
 
-.main
-  .work
-  .work_list
-  > .work_list__item
-  > .work_list__inner
-  > .inner__info
-  > .inner__btn {
+.main .work .work_list > .work_list__item > .card > .card__info > .card__btn {
   height: 28px;
   margin-left: 10px;
   float: right;
