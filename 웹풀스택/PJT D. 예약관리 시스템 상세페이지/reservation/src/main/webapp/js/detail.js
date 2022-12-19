@@ -1,3 +1,25 @@
+class Util {
+  addClass = function (element, classString) {
+    element.className = element.className
+      .split(" ")
+      .filter(function (name) {
+        return name !== classString;
+      })
+      .concat(classString)
+      .join(" ");
+  };
+  removeClass = function (element, classString) {
+    element.className = element.className
+      .split(" ")
+      .filter(function (name) {
+        return name !== classString;
+      })
+      .join(" ");
+  };
+}
+
+const util = new Util();
+
 function loadComment(xhr, displayInfoId, productId) {
   xhr.open("GET", `/reservation/api/comments?productId=${productId}`, false);
   xhr.onreadystatechange = function (event) {
@@ -13,8 +35,7 @@ function loadComment(xhr, displayInfoId, productId) {
           ".review_box .join_count .green"
         );
         joinCount.innerText = `${totalCount}건`;
-        
-        
+
         const gradeArea = document.querySelector(
           ".short_review_area .grade_area"
         );
@@ -24,8 +45,12 @@ function loadComment(xhr, displayInfoId, productId) {
           avgScore % 1 === 0 ? `${avgScore}.0` : avgScore.toFixed(1);
         graphValue.style.width = `${avgScore * 20}%`;
 
-        for (let i = 0; i < Math.min(3, reservationUserComments.length); i++) {
-          const userComment = reservationUserComments[i];
+        for (
+          let commentIndex = 0;
+          commentIndex < Math.min(3, reservationUserComments.length);
+          commentIndex++
+        ) {
+          const userComment = reservationUserComments[commentIndex];
 
           let date = new Date(userComment.createDate);
           date = `${date.getFullYear()}.${
@@ -107,8 +132,9 @@ function load(xhr, displayInfoId) {
     if (target.readyState === XMLHttpRequest.DONE) {
       const { status } = target;
       if (status === 0 || (status >= 200 && status < 400)) {
-        const { product, productImages, displayInfoImages } =
-          JSON.parse(xhr.response);
+        const { product, productImages, displayInfoImages } = JSON.parse(
+          xhr.response
+        );
         const { description, content } = product;
         let mainProductImage = null;
         let etcProductImage = null;
@@ -142,15 +168,14 @@ function load(xhr, displayInfoId) {
           prevBtnIcon.className += " off";
           nextBtn.className = "btn_nxt";
         }
-        
-        const storeDetailDsc = document.querySelector(".store_details .dsc")
+
+        const storeDetailDsc = document.querySelector(".store_details .dsc");
         storeDetailDsc.innerText = content;
 
         loadComment(xhr, displayInfoId, product.id);
 
-        const inDsc = document.querySelector(".detail_info_group .in_dsc")
+        const inDsc = document.querySelector(".detail_info_group .in_dsc");
         inDsc.innerText = content;
-        
 
         setDetailLocation(displayInfoImages, product);
       }
@@ -185,10 +210,7 @@ function load(xhr, displayInfoId) {
 function clearActive() {
   const actives = document.querySelectorAll(".info_tab_lst .active");
   actives.forEach((active) => {
-    const classList = active.className.split(" ");
-    active.className = classList
-      .filter((classItem) => classItem !== "active")
-      .join(" ");
+    util.removeClass(active, "active");
   });
 }
 
@@ -200,7 +222,7 @@ function clearHide(node) {
 function infoTabLstEventHandler(e) {
   e.preventDefault();
   let target = e.target;
-  if (target.parentNode.tagName == "A") {
+  if (target.parentNode.tagName != "A") {
     target = target.parentNode;
   }
   if (target.tagName == "A") {
